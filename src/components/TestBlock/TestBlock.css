@@ -1,0 +1,13 @@
+.test-block {
+  width: 80%;
+  height: 500px;
+  border: 2px solid red;
+  overflow: hidden;
+  display: block;
+  color: black;
+}
+
+.test-block__quote {
+  font-size: 10px;
+  line-height: 12px;
+}
