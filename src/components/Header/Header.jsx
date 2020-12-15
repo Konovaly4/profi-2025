@@ -8,9 +8,9 @@ const Header = () => {
     <div className='header'>
       <h1 className='header__title'>Hello</h1>
       <img className="header__img" src={img} alt='logo' />
-      <button className='header__button' onClick={alert('clicked!')}>Button</button>
+      <button className='header__button'>Button</button>
     </div>
   )
 }
 
-export default Header;
+export default Header;  
