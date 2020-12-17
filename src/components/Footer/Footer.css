@@ -1,0 +1,7 @@
+.footer {
+  background-color: #C4C4C4;
+  min-height: 300px;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: calc(56 / 48);
+}
