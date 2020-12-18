@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, .2);
+  background-color: rgba(255, 255, 255, .4);
   z-index: 1;
   display: none;
   flex-direction: column;
@@ -14,4 +14,131 @@
 
 .task-form-wrapper_visible {
   display: flex;
+}
+
+.task-form {
+  width: 70%;
+  margin: 0;
+  padding: 0 30px;
+  background-color: #FFF;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.task-form__title {
+  margin: 30px 0 30px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 55px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.task-form__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.task-form__list-item {
+  margin: 0 0 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.task-form__field-note {
+  margin: 0 0 5px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: #223157;
+}
+
+.task-form__field-item {
+  width: 60%;
+  height:25px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: #223157;
+}
+
+.task-form__button-wrapper {
+  margin: 0 0 10px;
+}
+
+.task-form__confirm-button {
+  margin: 0 10px 0 0;
+  padding: 0;
+  background-color: lightskyblue;
+  border-radius: 3px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.task-form__confirm-button:last-of-type {
+  margin: 0;
+}
+
+.task-form__confirm-button_confirmed {
+  background-color: lime;
+}
+
+.task-form__feedback {
+  width: 60%;
+  margin: 0 0 30px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.task-form__submit-button {
+  height: 40px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-family: Didot;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  background-color: rgb(251, 255, 0);
+}
+
+.task-form__close-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url('../../images/Close-logo.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
