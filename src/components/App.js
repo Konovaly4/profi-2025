@@ -27,7 +27,7 @@ function App() {
       <About />
       <Poem />
       <Footer />
-      <TaskForm visibility={taskShow} />
+      <TaskForm visibility={taskShow} formClose={hideTaskPopup} />
     </div>
   );
 }
