@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/profi-2025/static/css/main.9866c373.chunk.css",
+    "main.js": "/profi-2025/static/js/main.40cc2be7.chunk.js",
+    "main.js.map": "/profi-2025/static/js/main.40cc2be7.chunk.js.map",
+    "runtime-main.js": "/profi-2025/static/js/runtime-main.0b7fb689.js",
+    "runtime-main.js.map": "/profi-2025/static/js/runtime-main.0b7fb689.js.map",
+    "static/js/2.bf87470c.chunk.js": "/profi-2025/static/js/2.bf87470c.chunk.js",
+    "static/js/2.bf87470c.chunk.js.map": "/profi-2025/static/js/2.bf87470c.chunk.js.map",
+    "static/js/3.33b3eb8b.chunk.js": "/profi-2025/static/js/3.33b3eb8b.chunk.js",
+    "static/js/3.33b3eb8b.chunk.js.map": "/profi-2025/static/js/3.33b3eb8b.chunk.js.map",
+    "index.html": "/profi-2025/index.html",
+    "static/css/main.9866c373.chunk.css.map": "/profi-2025/static/css/main.9866c373.chunk.css.map",
+    "static/js/2.bf87470c.chunk.js.LICENSE.txt": "/profi-2025/static/js/2.bf87470c.chunk.js.LICENSE.txt",
+    "static/media/TaskForm.css": "/profi-2025/static/media/Close-logo.04771cd8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b7fb689.js",
+    "static/js/2.bf87470c.chunk.js",
+    "static/css/main.9866c373.chunk.css",
+    "static/js/main.40cc2be7.chunk.js"
+  ]
+}
