@@ -1,4 +1,32 @@
-.main-content {
-  width: 100%;
+.section__container {
+  width: 80%;
   margin: 0 auto;
+  padding: 183px 0 180px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons {
+  background-color: #E9E9E9;
+}
+
+.buttons__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section__title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: calc(62 / 48);
+  margin: 0 0 116px;
+  padding: 0;
+  background-color: #C4C4C4;
+  display: flex;
+  width: 100%;
+  text-transform: uppercase;
 }
