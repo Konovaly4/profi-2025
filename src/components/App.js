@@ -1,22 +1,33 @@
-import './App.css';
+import {useState} from 'react';
 import Header from './Header/Header';
 import Main from './Main/Main';
-<<<<<<< HEAD
-import TestBlock from './TestBlock/TestBlock';
-=======
+import About from './About/About';
+import Poem from './Poem/Poem';
 import Footer from './Footer/Footer';
->>>>>>> cce43e3ddddeaf7db11f4157aa9aba351291cb64
+import TaskForm from './TaskForm/TaskForm';
+import './App.css';
 
 function App() {
+  const [taskShow, setTaskShow] = useState(false);
+
+  // show task popup
+  const showTaskPopup = () => {
+    setTaskShow(true)
+  }
+
+  // hide task popup
+  const hideTaskPopup = () => {
+    setTaskShow(false)
+  }
+
   return (
     <div className="App">
       <Header />
-      <Main />
-<<<<<<< HEAD
-      <TestBlock />
-=======
+      <Main showTaskForm={showTaskPopup} hideTaskForm={hideTaskPopup} />
+      <About />
+      <Poem />
       <Footer />
->>>>>>> cce43e3ddddeaf7db11f4157aa9aba351291cb64
+      <TaskForm visibility={taskShow} />
     </div>
   );
 }

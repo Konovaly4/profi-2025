@@ -2,10 +2,10 @@ import React from 'react';
 import './Button.css';
 
 
-const Button = () => {
+const Button = (props) => {
 
   return (
-    <button className='button'>Образец кнопки</button>
+    <button className='button'>{props.placeholder} onClick={props.onPress}</button>
   )
 }
 
