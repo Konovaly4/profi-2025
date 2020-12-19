@@ -5,6 +5,7 @@ import About from './About/About';
 import Poem from './Poem/Poem';
 import Footer from './Footer/Footer';
 import TaskForm from './TaskForm/TaskForm';
+import TaskCard from './TaskCard/TaskCard';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Poem />
       <Footer />
       <TaskForm visibility={taskShow} formClose={hideTaskPopup} />
+      <TaskCard />
     </div>
   );
 }
