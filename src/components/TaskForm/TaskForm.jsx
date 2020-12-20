@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
 import cn from 'classnames';
 import TaskFormSelect from './TaskFormSelect/TaskFormSelect';
+import CloseButton from '../CloseButton/CloseButton';
+import AlertPopup from '../AlertPopup/AlertPopup';
 import useTaskFetch from '../../hooks/useTaskFetch';
-import {taskFormData, taskFormPlaceholders, taskButtonPlaceholders, taskFormLabels, taskFormTypeList, taskFormSubtypeList} from '../../constants/formData';
+import {taskFormData, alertPopupData, taskFormPlaceholders,  taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
 
 import './TaskForm.css';
 
@@ -10,8 +12,7 @@ const TaskForm = (props) => {
   // select states
   const [workType, setWorkType] = useState(0);
   const [workSubtype, setWorkSubtype] = useState(0);
-  const [workConfirmation, setWorkConfirmation] = useState(false);
-  const [workStatus, setWorkStatus] = useState(false);
+  const [alertVisibility, SetAlertVisibility] = useState(false);
 
   // set work type
   const setType = (e) => {
@@ -26,17 +27,25 @@ const TaskForm = (props) => {
     setWorkSubtype(e.target.value);
   }
 
-  const setConfirmation = () => {
-    setWorkConfirmation(!workConfirmation);
-  }
-
-  const setStatus = () => {
-    setWorkStatus(!workStatus);
-  }
-
   // collect data to fetch
   let selectedWorkType = taskFormTypeList[workType];
   let selectedWorkSubtype = taskFormSubtypeList[workType][workSubtype];
+
+  // open alert popup
+  const alertOpen = () => {
+    SetAlertVisibility(true);
+  }
+  
+  // close alert popup
+  const alertClose = () => {
+    SetAlertVisibility(false);
+      props.formClose();
+  }
+
+  // closing by clicking on wrapper
+  const closeByWrapper = (e) => {
+    !e.target.closest('.task-form') && alertOpen();
+  }
 
 
   console.log(selectedWorkType);
@@ -45,7 +54,7 @@ const TaskForm = (props) => {
 
 
   return (
-    <div className='task-form-wrapper'>
+    <div className={cn('task-form-wrapper', {'task-form-wrapper_visible': props.visibility})} onClick={closeByWrapper}>
       <section className='task-form'>
         <h2 className='task-form__title'>{taskFormData.title}</h2>
         <ul className='task-form__list'>
@@ -56,6 +65,10 @@ const TaskForm = (props) => {
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.workSubtype}</p>
             <TaskFormSelect name='work-subtype' label={taskFormLabels.workSubtype} optionList={taskFormSubtypeList[workType]} selectOption={setSubtype} />
+          </li>
+          <li className='task-form__list-item'>
+            <p className='task-form__field-note'>{taskFormData.workDescription}</p>
+            <textarea name='description' rows='4' className='task-form__field-item' placeholder={taskFormPlaceholders.workDescription}></textarea>
           </li>
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.name}</p>
@@ -70,13 +83,9 @@ const TaskForm = (props) => {
             <input type='text' required minLength='2' className='task-form__field-item' placeholder={taskFormPlaceholders.clientEmail}></input>
           </li>
         </ul>
-        <button className={cn('task-form__confirm-button', {'task-form__confirm-button_confirmed': !!workConfirmation})} onClick={setConfirmation}>{
-          workConfirmation ? taskButtonPlaceholders.confirmed : taskButtonPlaceholders.notConfirmed
-        }</button>
-        <button className={cn('task-form__confirm-button', {'task-form__confirm-button_confirmed': !!workStatus})} onClick={setStatus}>{
-          workStatus ? taskButtonPlaceholders.finished : taskButtonPlaceholders.notFinished
-        }</button>
-        <textarea className='task-form__feedback' name='feedback' disabled={workStatus} rows='4' placeholder={taskFormPlaceholders.clientFeedback} />
+        <button className='task-form__submit-button'>{buttonData.submit}</button>
+        <CloseButton onPress={alertOpen} />
+        <AlertPopup visibility={alertVisibility} title={alertPopupData.dataFormClose} onYesClick={alertClose} onNoClick={alertClose} />
       </section>
     </div>
   )

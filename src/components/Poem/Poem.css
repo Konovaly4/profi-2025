@@ -1,14 +1,19 @@
 .poem {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #E9E9E9;
 }
 
 .poem__content {
   background-color: #C4C4C4;
+  width: 100%;
   min-height: 280px;
   font-weight: 700;
   font-size: 48px;
   line-height: calc(62 / 48);
-  margin: 0;
+  margin:180px 120px 160px;
   padding: 0;
   text-align: center;
   text-transform: uppercase;

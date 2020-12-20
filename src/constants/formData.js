@@ -9,12 +9,14 @@ export const taskFormData = {
   title: 'Заявка на ремонт',
   workType: 'Мне нужно',
   workSubtype: 'Подробнее, что нужно',
+  workDescription: 'В нескольких словах, что именно нужно',
   name: 'Имя заявителя',
   phone: 'Телефон заявителя',
   email: 'e-mail заявителя'
 }
 
 export const taskFormPlaceholders = {
+  workDescription: 'Опишите работу',
   clientName: 'Введите свое имя',
   clientPhone: 'Введите телефон',
   clientEmail: 'Введите email',
@@ -31,6 +33,11 @@ export const taskButtonPlaceholders = {
 export const taskFormLabels = {
   workType: 'Услуга',
   workSubtype: 'Подкатегория услуги',
+}
+
+export const alertPopupData = {
+  dataCardDelete: 'Вы действительно хотите удалить заявку?',
+  dataFormClose: 'Вы действительно хотите отменить оформление заявки?'
 }
 
 export const taskFormTypeList = [
@@ -81,3 +88,9 @@ export const taskFormSubtypeList = [
     'Прачечная'
   ],
 ]
+
+export const buttonData = {
+  save: 'Сохранить',
+  delete: 'Удалить',
+  submit: 'Отправить'
+}

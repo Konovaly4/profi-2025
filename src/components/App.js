@@ -6,11 +6,14 @@ import Poem from './Poem/Poem';
 import Reviews from './Reviews/Reviews';
 import Footer from './Footer/Footer';
 import TaskForm from './TaskForm/TaskForm';
+import TaskCard from './TaskCard/TaskCard';
 import Mytasks from './Mytasks/Mytasks';
 import './App.css';
 
 function App() {
+  // select states
   const [taskShow, setTaskShow] = useState(false);
+  const [taskCardShow, setTaskCardShow] = useState(false);
 
   // show task popup
   const showTaskPopup = () => {
@@ -22,6 +25,16 @@ function App() {
     setTaskShow(false)
   }
 
+  // show task card popup
+  const showTaskCardPopup = () => {
+    setTaskCardShow(true)
+  }
+
+  // hide task popup
+  const hideTaskCardPopup = () => {
+    setTaskCardShow(false)
+  }
+
   return (
     <div className="App">
       <Header />
@@ -30,8 +43,9 @@ function App() {
       <Poem />
       <Reviews />
       <Footer />
-      <TaskForm visibility={taskShow} />
-      <Mytasks />
+      <Mytasks onTaskShow={showTaskCardPopup} />
+      <TaskForm visibility={taskShow} formClose={hideTaskPopup} />
+      <TaskCard visibility={taskCardShow} formClose={hideTaskCardPopup} />
     </div>
   );
 }

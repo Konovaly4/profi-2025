@@ -3,7 +3,7 @@ import {myTasksData} from '../../constants/formData';
 import Mytask from '../Mytask/Mytask';
 import './Mytasks.css';
 
-const Mytasks = () => {
+const Mytasks = (props) => {
 
   return (
     <section className='mytasks'>
@@ -12,10 +12,10 @@ const Mytasks = () => {
         <button className='mytasks__filter-button'>Фильтр</button>
       </div>
       <ul className='mytasks__list'>
-          <Mytask />
-          <Mytask />
-          <Mytask />
-          <Mytask />
+          <Mytask onTaskShow={props.onTaskShow}/>
+          <Mytask onTaskShow={props.onTaskShow}/>
+          <Mytask onTaskShow={props.onTaskShow}/>
+          <Mytask onTaskShow={props.onTaskShow}/>
         </ul>
     </section>
   )
