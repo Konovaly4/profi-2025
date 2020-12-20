@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      <p className='footer__title'>Футер</p>
+      <p className='footer__title'>Тут будет футер (над наполнением работаем :-) Под футером - дополнительные блоки, функционал их появления допилим</p>
     </footer>
   )
 }
