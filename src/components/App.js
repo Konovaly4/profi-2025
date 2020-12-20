@@ -11,7 +11,9 @@ import Mytasks from './Mytasks/Mytasks';
 import './App.css';
 
 function App() {
+  // select states
   const [taskShow, setTaskShow] = useState(false);
+  const [taskCardShow, setTaskCardShow] = useState(false);
 
   // show task popup
   const showTaskPopup = () => {
@@ -23,6 +25,16 @@ function App() {
     setTaskShow(false)
   }
 
+  // show task card popup
+  const showTaskCardPopup = () => {
+    setTaskCardShow(true)
+  }
+
+  // hide task popup
+  const hideTaskCardPopup = () => {
+    setTaskCardShow(false)
+  }
+
   return (
     <div className="App">
       <Header />
@@ -31,9 +43,9 @@ function App() {
       <Poem />
       <Reviews />
       <Footer />
+      <Mytasks onTaskShow={showTaskCardPopup} />
       <TaskForm visibility={taskShow} formClose={hideTaskPopup} />
-      <Mytasks />
-      <TaskCard />
+      <TaskCard visibility={taskCardShow} formClose={hideTaskCardPopup} />
     </div>
   );
 }

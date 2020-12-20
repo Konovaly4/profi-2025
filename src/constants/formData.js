@@ -85,5 +85,7 @@ export const taskFormSubtypeList = [
 ]
 
 export const buttonData = {
+  save: 'Сохранить',
+  delete: 'Удалить',
   submit: 'Отправить'
 }

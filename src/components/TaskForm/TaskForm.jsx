@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import cn from 'classnames';
 import TaskFormSelect from './TaskFormSelect/TaskFormSelect';
+import CloseButton from '../CloseButton/CloseButton';
 import useTaskFetch from '../../hooks/useTaskFetch';
-import {taskFormData, taskFormPlaceholders, taskButtonPlaceholders, taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
+import {taskFormData, taskFormPlaceholders,  taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
 
 import './TaskForm.css';
 
@@ -10,8 +11,6 @@ const TaskForm = (props) => {
   // select states
   const [workType, setWorkType] = useState(0);
   const [workSubtype, setWorkSubtype] = useState(0);
-  const [workConfirmation, setWorkConfirmation] = useState(false);
-  const [workStatus, setWorkStatus] = useState(false);
 
   // closing by clicking on wrapper
   const closeByWrapper = (e) => {
@@ -29,14 +28,6 @@ const TaskForm = (props) => {
   const setSubtype = (e) => {
     // console.log('e.subtarget - ' + e.target.value)
     setWorkSubtype(e.target.value);
-  }
-
-  const setConfirmation = () => {
-    setWorkConfirmation(!workConfirmation);
-  }
-
-  const setStatus = () => {
-    setWorkStatus(!workStatus);
   }
 
   // collect data to fetch
@@ -64,7 +55,7 @@ const TaskForm = (props) => {
           </li>
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.workDescription}</p>
-            <input type='text' required minLength='2' className='task-form__field-item' placeholder={taskFormPlaceholders.workDescription}></input>
+            <textarea name='description' rows='4' className='task-form__field-item' placeholder={taskFormPlaceholders.workDescription}></textarea>
           </li>
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.name}</p>
@@ -79,17 +70,8 @@ const TaskForm = (props) => {
             <input type='text' required minLength='2' className='task-form__field-item' placeholder={taskFormPlaceholders.clientEmail}></input>
           </li>
         </ul>
-        <div className='task-form__button-wrapper'>
-          <button className={cn('task-form__confirm-button', {'task-form__confirm-button_confirmed': !!workConfirmation})} onClick={setConfirmation}>{
-            workConfirmation ? taskButtonPlaceholders.confirmed : taskButtonPlaceholders.notConfirmed
-          }</button>
-          <button className={cn('task-form__confirm-button', {'task-form__confirm-button_confirmed': !!workStatus})} onClick={setStatus}>{
-            workStatus ? taskButtonPlaceholders.finished : taskButtonPlaceholders.notFinished
-          }</button>
-        </div>
-        <textarea className='task-form__feedback' name='feedback' disabled={workStatus} rows='4' placeholder={taskFormPlaceholders.clientFeedback} />
         <button className='task-form__submit-button'>{buttonData.submit}</button>
-        <button className='task-form__close-button' onClick={props.formClose} />
+        <CloseButton onPress={props.formClose} />
       </section>
     </div>
   )

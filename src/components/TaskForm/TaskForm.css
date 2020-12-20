@@ -1,7 +1,7 @@
 .task-form-wrapper {
   width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, .4);
@@ -21,6 +21,7 @@
   margin: 0;
   padding: 0 30px;
   background-color: #FFF;
+  border: 1px solid black;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -69,7 +70,6 @@
 
 .task-form__field-item {
   width: 60%;
-  height:25px;
   font-family: Didot;
   font-style: normal;
   font-weight: normal;
@@ -77,40 +77,6 @@
   line-height: 20px;
   letter-spacing: -0.01em;
   color: #223157;
-}
-
-.task-form__button-wrapper {
-  margin: 0 0 10px;
-}
-
-.task-form__confirm-button {
-  margin: 0 10px 0 0;
-  padding: 0;
-  background-color: lightskyblue;
-  border-radius: 3px;
-  font-family: Didot;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 20px;
-}
-
-.task-form__confirm-button:last-of-type {
-  margin: 0;
-}
-
-.task-form__confirm-button_confirmed {
-  background-color: lime;
-}
-
-.task-form__feedback {
-  width: 60%;
-  margin: 0 0 30px;
-  font-family: Didot;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 20px;
 }
 
 .task-form__submit-button {
@@ -124,21 +90,4 @@
   font-size: 25px;
   line-height: 30px;
   background-color: rgb(251, 255, 0);
-}
-
-.task-form__close-button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  background-image: url('../../images/Close-logo.svg');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 30px;
-  right: 30px;
 }
