@@ -2,8 +2,9 @@ import {useState, useEffect} from 'react';
 import cn from 'classnames';
 import TaskFormSelect from './TaskFormSelect/TaskFormSelect';
 import CloseButton from '../CloseButton/CloseButton';
+import AlertPopup from '../AlertPopup/AlertPopup';
 import useTaskFetch from '../../hooks/useTaskFetch';
-import {taskFormData, taskFormPlaceholders,  taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
+import {taskFormData, alertPopupData, taskFormPlaceholders,  taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
 
 import './TaskForm.css';
 
@@ -11,11 +12,7 @@ const TaskForm = (props) => {
   // select states
   const [workType, setWorkType] = useState(0);
   const [workSubtype, setWorkSubtype] = useState(0);
-
-  // closing by clicking on wrapper
-  const closeByWrapper = (e) => {
-    !e.target.closest('.task-form') && props.formClose();
-  }
+  const [alertVisibility, SetAlertVisibility] = useState(false);
 
   // set work type
   const setType = (e) => {
@@ -33,6 +30,22 @@ const TaskForm = (props) => {
   // collect data to fetch
   let selectedWorkType = taskFormTypeList[workType];
   let selectedWorkSubtype = taskFormSubtypeList[workType][workSubtype];
+
+  // open alert popup
+  const alertOpen = () => {
+    SetAlertVisibility(true);
+  }
+  
+  // close alert popup
+  const alertClose = () => {
+    SetAlertVisibility(false);
+      props.formClose();
+  }
+
+  // closing by clicking on wrapper
+  const closeByWrapper = (e) => {
+    !e.target.closest('.task-form') && alertOpen();
+  }
 
 
   console.log(selectedWorkType);
@@ -71,7 +84,8 @@ const TaskForm = (props) => {
           </li>
         </ul>
         <button className='task-form__submit-button'>{buttonData.submit}</button>
-        <CloseButton onPress={props.formClose} />
+        <CloseButton onPress={alertOpen} />
+        <AlertPopup visibility={alertVisibility} title={alertPopupData.dataFormClose} onYesClick={alertClose} onNoClick={alertClose} />
       </section>
     </div>
   )
