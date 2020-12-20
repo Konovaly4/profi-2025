@@ -1,0 +1,11 @@
+.review__content {
+  font-weight: 400;
+  font-size: 31px;
+  line-height: calc(36 /31);
+  background-color: #C4C4C4;
+  min-height: 500px;
+  max-width: 387px;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
