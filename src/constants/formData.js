@@ -35,6 +35,11 @@ export const taskFormLabels = {
   workSubtype: 'Подкатегория услуги',
 }
 
+export const alertPopupData = {
+  dataCardDelete: 'Вы действительно хотите удалить заявку?',
+  dataFormClose: 'Вы действительно хотите отменить оформление заявки?'
+}
+
 export const taskFormTypeList = [
   'Электрика',
   'Сантехника',

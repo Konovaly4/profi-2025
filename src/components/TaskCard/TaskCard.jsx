@@ -1,22 +1,35 @@
 import {useState} from 'react';
 import cn from 'classnames';
 import CloseButton from '../CloseButton/CloseButton';
-import {taskFormPlaceholders, taskButtonPlaceholders, buttonData} from '../../constants/formData';
+import AlertPopup from '../AlertPopup/AlertPopup';
+import {taskFormPlaceholders, taskButtonPlaceholders, buttonData, alertPopupData} from '../../constants/formData';
 import './TaskCard.css'
 
 const TaskCard = (props) => {
   // set work status
   const [workConfirmation, setWorkConfirmation] = useState('not-confirmed');
+  const [alertVisibility, SetAlertVisibility] = useState(false);
 
   // work status setter
   const setWorkStatus = () => {
     setWorkConfirmation(workConfirmation === 'not-confirmed' ? 'confirmed' : workConfirmation === 'confirmed' ? 'done' : 'not-confirmed');
   }
 
-    // closing by clicking on wrapper
-    const closeByWrapper = (e) => {
-      !e.target.closest('.task-card') && props.formClose();
-    }
+  // closing by clicking on wrapper
+  const closeByWrapper = (e) => {
+    !e.target.closest('.task-card') && props.formClose();
+  }
+
+  // open alert popup
+  const alertOpen = () => {
+    SetAlertVisibility(true);
+  }
+
+  // close alert popup
+  const alertClose = () => {
+    SetAlertVisibility(false);
+    props.formClose();
+  }
 
   return (
     <div className={cn('task-card__wrapper', {'task-card__wrapper_visible': props.visibility})} onClick={closeByWrapper}>
@@ -35,9 +48,10 @@ const TaskCard = (props) => {
         <textarea className='task-card__feedback' rows='6' placeholder={taskFormPlaceholders.clientFeedback}></textarea>
         <div className='task-card__button-wrapper'>
           <button className='task-card__button task-card__button_save-button'>{buttonData.save}</button>
-          <button className='task-card__button task-card__button_delete-button'>{buttonData.delete}</button>
+          <button className='task-card__button task-card__button_delete-button' onClick={alertOpen} >{buttonData.delete}</button>
         </div>
         <CloseButton onPress={props.formClose} />
+        <AlertPopup visibility={alertVisibility} title={alertPopupData.dataCardDelete} onYesClick={alertClose} onNoClick={alertClose} />
       </section>
     </div>
   )
