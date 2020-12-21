@@ -2,7 +2,7 @@ import {useState} from 'react';
 import UserPopup from '../UserPopup/UserPopup';
 import './Header.css';
 
-const Header = () => {
+const Header = (props) => {
   // collecting states
   const [userState, setUserState] = useState('');
 
@@ -32,7 +32,8 @@ const Header = () => {
           <li className='user-navigation__item' onClick={setLoginState}><a class='login-link' href='#'>Вход</a></li>
           <li className='user-navigation__item' onClick={setRegState}><a class='signin-link' href='#'>Регистрация</a></li>
         </ul>
-        <UserPopup state={userState} setUserState={setUserState} setLoginState={setLoginState} clearRegState={clearRegState}/>
+        {props.user.userToken && <p>Привет, {props.user.userName}</p>}
+        <UserPopup state={userState} setUserState={setUserState} setLoginState={setLoginState} clearRegState={clearRegState} setUser={props.setUser}/>
       </div>
     </header>
   )

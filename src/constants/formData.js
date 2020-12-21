@@ -1,10 +1,3 @@
-export const myTasksData = [
-'Поменять электропроводку',
-'Убрать квартиру',
-'Покрасить стены',
-'Поменять кран',
-]
-
 export const taskFormData = {
   title: 'Заявка на ремонт',
   workType: 'Мне нужно',

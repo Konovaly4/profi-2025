@@ -1,5 +1,5 @@
 import React from 'react';
-import {myTasksData} from '../../constants/formData';
+import {tasksData} from '../../constants/tasksData';
 import Mytask from '../Mytask/Mytask';
 import './Mytasks.css';
 
@@ -8,14 +8,18 @@ const Mytasks = (props) => {
   return (
     <section className='mytasks'>
       <div className='mytasks__container'>
-        <h2 className='mytasks__title'>Мои заявки</h2>
-        <button className='mytasks__filter-button'>Фильтр</button>
+        <h2 className='mytasks__title'>{tasksData.title}</h2>
+        <button className='mytasks__filter-button'>{tasksData.buttonName}</button>
       </div>
       <ul className='mytasks__list'>
-          <Mytask onTaskShow={props.onTaskShow}/>
-          <Mytask onTaskShow={props.onTaskShow}/>
-          <Mytask onTaskShow={props.onTaskShow}/>
-          <Mytask onTaskShow={props.onTaskShow}/>
+        {props.tasks.length === 0 ?
+          <p className='mytasks__empty-note'>{tasksData.emptyNote}</p> :
+          props.tasks.map((item, num) => {
+            return (
+              <Mytask key={num} number={num} onTaskShow={props.onTaskShow} task={item}/>
+            )
+          })
+        }    
         </ul>
     </section>
   )

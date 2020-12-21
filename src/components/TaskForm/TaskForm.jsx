@@ -5,14 +5,34 @@ import CloseButton from '../CloseButton/CloseButton';
 import AlertPopup from '../AlertPopup/AlertPopup';
 import useTaskFetch from '../../hooks/useTaskFetch';
 import {taskFormData, alertPopupData, taskFormPlaceholders,  taskFormLabels, taskFormTypeList, taskFormSubtypeList, buttonData} from '../../constants/formData';
+import {urlData} from '../../constants/urlData';
 
 import './TaskForm.css';
 
 const TaskForm = (props) => {
   // select states
+  const [alertVisibility, SetAlertVisibility] = useState(false);
   const [workType, setWorkType] = useState(0);
   const [workSubtype, setWorkSubtype] = useState(0);
-  const [alertVisibility, SetAlertVisibility] = useState(false);
+  const [workDescription, setWorkDescription] = useState(0);
+  // collect user data
+  const userName = props.user.userName;
+  const userPhone = props.user.userPhone;
+  const userEmail = props.user.userEmail; 
+  const userToken = props.user.userToken;
+  // create common data
+  const workData = {workType, workSubtype, workDescription, userName, userPhone, userEmail, userToken}
+
+  // use fetch hooks
+  const {
+    tasksGet,
+    tasksGetByClient,
+    tasksGetByWorker,
+    taskCreate,
+    taskUpdate,
+    taskDelete
+  } = useTaskFetch(urlData.local, workData)
+
 
   // set work type
   const setType = (e) => {
@@ -27,19 +47,25 @@ const TaskForm = (props) => {
     setWorkSubtype(e.target.value);
   }
 
-  // collect data to fetch
-  let selectedWorkType = taskFormTypeList[workType];
-  let selectedWorkSubtype = taskFormSubtypeList[workType][workSubtype];
+  // set work description
+  const setDescription = (e) => {
+    setWorkDescription(e.target.value);
+  }
 
   // open alert popup
   const alertOpen = () => {
     SetAlertVisibility(true);
   }
   
-  // close alert popup
-  const alertClose = () => {
+  // close alert popup with yes option
+  const alertCloseYesOption = () => {
     SetAlertVisibility(false);
       props.formClose();
+  }
+
+  // close alert popup with yes option
+  const alertCloseNoOption = () => {
+    SetAlertVisibility(false);
   }
 
   // closing by clicking on wrapper
@@ -47,10 +73,29 @@ const TaskForm = (props) => {
     !e.target.closest('.task-form') && alertOpen();
   }
 
+    // create new task
+    const createTask = () => {
+      taskCreate()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        err.json()
+        .then(err => console.log(err));
+      })
+    }
 
-  console.log(selectedWorkType);
-  console.log(selectedWorkSubtype);
-  console.log('break');
+    // click to send
+    const formSubmit = (e) => {
+      e.preventDefault();
+      createTask();
+      props.formClose();
+    }
+
+
+  // console.log(selectedWorkType);
+  // console.log(selectedWorkSubtype);
+  // console.log('break');
 
 
   return (
@@ -68,9 +113,9 @@ const TaskForm = (props) => {
           </li>
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.workDescription}</p>
-            <textarea name='description' rows='4' className='task-form__field-item' placeholder={taskFormPlaceholders.workDescription}></textarea>
+            <textarea name='description' rows='4' className='task-form__field-item' placeholder={taskFormPlaceholders.workDescription} onChange={setDescription}></textarea>
           </li>
-          <li className='task-form__list-item'>
+          {/* <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.name}</p>
             <input type='text' required minLength='2' className='task-form__field-item' placeholder={taskFormPlaceholders.clientName}></input>
           </li>
@@ -81,11 +126,12 @@ const TaskForm = (props) => {
           <li className='task-form__list-item'>
             <p className='task-form__field-note'>{taskFormData.email}</p>
             <input type='text' required minLength='2' className='task-form__field-item' placeholder={taskFormPlaceholders.clientEmail}></input>
-          </li>
+          </li> */}
         </ul>
-        <button className='task-form__submit-button'>{buttonData.submit}</button>
+        <p className='task-form__field-note'>Ваши имя, телефон и email будут указаны в заявке</p>
+        <button className='task-form__submit-button' onClick={formSubmit}>{buttonData.submit}</button>
         <CloseButton onPress={alertOpen} />
-        <AlertPopup visibility={alertVisibility} title={alertPopupData.dataFormClose} onYesClick={alertClose} onNoClick={alertClose} />
+        <AlertPopup visibility={alertVisibility} title={alertPopupData.dataFormClose} onYesClick={alertCloseYesOption} onNoClick={alertCloseNoOption} />
       </section>
     </div>
   )
