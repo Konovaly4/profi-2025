@@ -5,9 +5,7 @@ const Poem = () => {
 
   return (
     <section className='poem'>
-      <div className='section__container'>
-        <article className='poem__content'>Стих</article>
-      </div>
+        <article className='poem__content'>Тут будет стих, вещающий о смысле всех работ</article>
     </section>
   )
 }
