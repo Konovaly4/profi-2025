@@ -18,7 +18,7 @@ const Header = () => {
   }
 
   // clear reg state
-  const clearRegState = () => { 
+  const clearRegState = () => {
     setUserState('');
   }
 
@@ -26,7 +26,7 @@ const Header = () => {
     <header className='header'>
       <div className='header__container'>
         <a className='header__link' href='#'>
-        <img className='header__img' src='#' alt='logo' />
+        Гражданин поэт
         </a>
         <ul className='user-navigation'>
           <li className='user-navigation__item' onClick={setLoginState}><a class='login-link' href='#'>Вход</a></li>

@@ -1,20 +1,26 @@
 .button {
-  font-weight: 400;
-  font-size: 31px;
-  line-height: calc(36 /31);
-  background-color: #C4C4C4;
-  min-height: 194px;
-  min-width: 45%;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: calc(20 /24);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: white;
+  background-color: #D4A66F;
+  min-width: 32%;
   display: block;
   text-align: center;
-  padding: 10px;
-  margin: 0;
+  padding: 18px 0;
+  margin: 0 20px 0 0;
   border: none;
   text-decoration: none;
-  transition: background-color .4s linear;
+  transition: opacity .4s linear;
+}
+
+.button:last-child {
+  margin-right: 0;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: orange;
+  opacity: .6;
 }

@@ -4,25 +4,101 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #E9E9E9;
+  background-color: #F6F4F2;
+  position: relative;
+}
+
+.main::before, .main::after {
+  content: "";
+  width: 124px;
+  height: 14px;
+  background-image: url('../../images/decel.svg');
+  position: absolute;
+}
+
+.main::before{
+  top: 229px;
+  left: auto;
+}
+
+.main::after{
+  bottom: 80px;
+  left: auto;
 }
 
 .main__title {
-  margin: 173px 120px 116px;
+  margin: 149px auto 81px;
   padding: 0;
-  align-self: flex-start;
   font-weight: 700;
-  font-size: 48px;
-  line-height: calc(62 / 48);
-  background-color: #C4C4C4;
+  font-size: 47px;
+  line-height: calc(61 / 47);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #353E44;
 }
 
+.main__subtitle {
+  margin: 0 auto 22px;
+  padding: 0;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: calc(34 / 26);
+  text-transform: uppercase;
+  letter-spacing: 0.044em;
+  color: #353E44;
+}
+
+.main__quote {
+  position: relative;
+}
+
+.main__quote-quotes::before, .main__quote-quotes::after {
+  font-family: serif;
+  color: #D4A66F;
+  position: absolute;
+  font-size: 95px;
+  line-height: calc(95 / 95);
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  line-height: 0;
+}
+
+.main__quote-quotes::before {
+  content: "\201C";
+  left: -60px;
+  top: 15px;
+}
+
+.main__quote-quotes::after {
+  content: "\201D";
+  right: -60px;
+  bottom: 85px;
+}
+
+.main__quote-text {
+  margin: 0 auto 11px;
+  padding: 0;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: calc(34 / 26);
+  color: #353E44;
+}
+
+.main__quote-author {
+  margin: 0 auto 68px;
+  padding: 0;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: calc(23 / 18);
+  color: #B3B4B9;
+  text-align: right;
+  display: block;
+}
 
 .main__buttons-container {
   width: calc(100% - 240px);
   margin: 0 0 180px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
