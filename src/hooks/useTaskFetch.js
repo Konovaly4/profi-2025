@@ -9,6 +9,7 @@ const useTaskFetch = (url, data) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${data.userToken}`,
     }})
     .then((res) => {
       return (res.ok ? res.json() : Promise.reject(res));
@@ -23,6 +24,7 @@ const useTaskFetch = (url, data) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${data.userToken}`,
     }})
     .then((res) => {
       return (res.ok ? res.json() : Promise.reject(res));
@@ -37,6 +39,7 @@ const useTaskFetch = (url, data) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${data.userToken}`,
       }})
       .then((res) => {
         return (res.ok ? res.json() : Promise.reject(res));

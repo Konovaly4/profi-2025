@@ -27,6 +27,8 @@ function App() {
   const [taskList, setTaskList] = useState([]);
   const [currentTask, setCurrentTask] = useState(undefined);
 
+  console.log('user - ' + user.userName)
+
   // show task popup
   const showTaskPopup = () => {
     setTaskShow(true)
@@ -49,31 +51,45 @@ function App() {
   }
 
   // fetch user
-  const setCurrentUser = (res) => {;
+  const setCurrentUser = (res) => {
+    localStorage.setItem('jwt', JSON.stringify(res.jwt))
     setUser({
-      userToken: res.jwt,
       userId: res.user.id,
       userName: res.user.username,
       userPhone: res.user.userphone,
       userEmail: res.user.email,
-    })
+    });
+    setLoggedIn(true);
+  }
+
+  const logout = (res) => {
+    localStorage.removeItem('jwt')
+    setUser({
+      userId: undefined,
+      userName: undefined,
+      userPhone: undefined,
+      userEmail: undefined,
+    });
+    setLoggedIn(false);
   }
 
   const findTasks = (res) => {
     setTaskList(res);
   }
 
+  console.log(localStorage.getItem('jwt'))
+
   return (
     <div className="App">
-      <Header setUser={setCurrentUser} user={user}/>
-      <Main showTaskForm={showTaskPopup} hideTaskForm={hideTaskPopup} user={user} setTasks={findTasks} />
+      <Header setUser={setCurrentUser} user={user} loggedIn={loggedIn} logout={logout}/>
+      <Main showTaskForm={showTaskPopup} hideTaskForm={hideTaskPopup} user={user} loggedIn={loggedIn} setTasks={findTasks} />
       <Switch>
         <Route exact path='/'>
           <About />
           <Poem />
           <Reviews />
         </Route>
-        <ProtectedRoute path='/my-tasks' loggedIn={loggedIn} component={Mytasks} onTaskShow={showTaskCardPopup} tasks={taskList} />
+        <ProtectedRoute path='/my-tasks' loggedIn={loggedIn} component={Mytasks} onTaskShow={showTaskCardPopup} tasks={taskList} user={user} />
         {/* <Route path='/my-tasks'>
           <Mytasks onTaskShow={showTaskCardPopup} tasks={taskList}/>
         </Route> */}

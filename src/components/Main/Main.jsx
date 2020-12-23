@@ -1,4 +1,5 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import useTaskFetch from '../../hooks/useTaskFetch';
 import Button from '../Button/Button';
 import {mainButtonsData} from '../../constants/mainButtonsData';
@@ -22,6 +23,14 @@ const Buttons = (props) => {
     taskDelete
   } = useTaskFetch(urlData.local, userData);
 
+  // state of link status and page appearance
+  const [pageMode, setPageMode] = useState('main');
+
+  // set page mode
+  // useEffect(() => {
+  //   props.loggedIn && setPageMode('main')
+  // }, [props.loggedIn])
+
   const getClientTasks = () => {
     tasksGetByClient()
     .then((res) => {
@@ -33,14 +42,22 @@ const Buttons = (props) => {
     })
   }
 
+  const showTasks = () => {
+    setPageMode('tasks');
+  }
+
+  const hideTasks = () => {
+    setPageMode('main');
+  }
 
 
   return (
     <section className='main'>
         <h2 className='main__title'>Найди Мастера - 2025</h2>
         <div className='main__buttons-container'>
-          <Button placeholder={mainButtonsData.showTasks} onPress={getClientTasks}/>
-          <Button placeholder={mainButtonsData.createTask} onPress={props.showTaskForm}/>
+          {props.loggedIn && pageMode ==='main' && <Link className='main__navlink' to='/my-tasks' onClick={showTasks}>{mainButtonsData.showTasks}</Link>}
+          {props.loggedIn && pageMode ==='tasks' && <Link className='main__navlink' to='/' onClick={hideTasks}>{mainButtonsData.showMainPage}</Link>}
+          {props.loggedIn && <Button placeholder={mainButtonsData.createTask} onPress={props.showTaskForm}/>}
         </div>
     </section>
   )

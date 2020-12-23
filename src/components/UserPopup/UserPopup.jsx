@@ -99,7 +99,6 @@ const UserPopup = (props) => {
     }
 
 
-
   return (
     <div className={cn('user-popup__wrapper', {'user-popup__wrapper_visible': visibility})} onClick={closeByWrapper }>
       <form className='user-popup'>
