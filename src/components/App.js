@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './Header/Header';
 import Main from './Main/Main';
 import About from './About/About';
@@ -8,6 +9,7 @@ import Footer from './Footer/Footer';
 import TaskForm from './TaskForm/TaskForm';
 import TaskCard from './TaskCard/TaskCard';
 import Mytasks from './Mytasks/Mytasks';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
     userPhone: undefined,
     userEmail: undefined,
   });
+  const [loggedIn, setLoggedIn] = useState(false);
   const [taskList, setTaskList] = useState([]);
   const [currentTask, setCurrentTask] = useState(undefined);
 
@@ -64,11 +67,18 @@ function App() {
     <div className="App">
       <Header setUser={setCurrentUser} user={user}/>
       <Main showTaskForm={showTaskPopup} hideTaskForm={hideTaskPopup} user={user} setTasks={findTasks} />
-      <About />
-      <Poem />
-      <Reviews />
+      <Switch>
+        <Route exact path='/'>
+          <About />
+          <Poem />
+          <Reviews />
+        </Route>
+        <ProtectedRoute path='/my-tasks' loggedIn={loggedIn} component={Mytasks} onTaskShow={showTaskCardPopup} tasks={taskList} />
+        {/* <Route path='/my-tasks'>
+          <Mytasks onTaskShow={showTaskCardPopup} tasks={taskList}/>
+        </Route> */}
+      </Switch>
       <Footer />
-      <Mytasks onTaskShow={showTaskCardPopup} tasks={taskList}/>
       <TaskForm visibility={taskShow} formClose={hideTaskPopup} user={user} />
       <TaskCard visibility={taskCardShow} formClose={hideTaskCardPopup} />
     </div>
