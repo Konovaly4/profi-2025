@@ -18,11 +18,26 @@
   text-transform: uppercase;
 }
 
-
 .main__buttons-container {
   width: calc(100% - 240px);
   margin: 0 0 180px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.main__navlink {
+  font-weight: 400;
+  font-size: 31px;
+  line-height: calc(36 /31);
+  background-color: #C4C4C4;
+  min-height: 194px;
+  min-width: 45%;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  transition: background-color .4s linear;
 }

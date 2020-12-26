@@ -11,11 +11,11 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: `${data.username}`,
-        email: `${data.email}`,
-        password: `${data.password}`,
-        phone: `${data.phone}`,
-        permission: `${data.permission}`
+        username: `${data.userName}`,
+        email: `${data.userEmail}`,
+        password: `${data.userPassword}`,
+        userphone: `${data.userPhone}`,
+        permission: `${data.userPermission}`
       })
     })
     .then((res) => {
@@ -33,8 +33,8 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        identifier: `${data.email}`,
-        password: `${data.password}`
+        identifier: `${data.userEmail}`,
+        password: `${data.userPassword}`
       }) 
     })
     .then((res) => {
@@ -58,7 +58,7 @@ const useUserFetch = (url, data) => {
   
   // get one user
   const userGet = () => {
-    return fetch(`${url}users/:id`, {
+    return fetch(`${url}users/${data.userId}`, {
       redirect: 'follow',
       method: 'GET',
       headers: {
@@ -81,11 +81,11 @@ const useUserFetch = (url, data) => {
           'Authorization': `Bearer ${data.token}`
         },
         body: JSON.stringify({
-          username: `${data.username}`,
-          email: `${data.email}`,
-          password: `${data.password}`,
-          phone: `${data.phone}`,
-          permission: `${data.permission}`
+          username: `${data.userName}`,
+          email: `${data.userEmail}`,
+          password: `${data.userPassword}`,
+          userphone: `${data.userPhone}`,
+          permission: `${data.userPermission}`
         })
       })
       .then((res) => {
@@ -109,12 +109,12 @@ const useUserFetch = (url, data) => {
     }  
 
   return {
-    userAuth, 
-    userLogin,
-    usersGet,
-    userGet,
-    userUpdate,
-    userDelete
+      userAuth, 
+      userLogin,
+      usersGet,
+      userGet,
+      userUpdate,
+      userDelete
   }
 }
 
