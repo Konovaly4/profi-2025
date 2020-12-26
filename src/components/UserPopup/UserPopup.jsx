@@ -8,13 +8,12 @@ import './UserPopup.css';
 
 const UserPopup = (props) => {
   const [visibility, setVisibility] = useState(false);
-  const [userId, setUserId] = useState(undefined);
-  const [userName,  setUserName] = useState(undefined);
-  const [userPhone,  setUserPhone] = useState(undefined);
-  const [userEmail,  setUserEmail] = useState(undefined);
-  const [userPassword,  setUserPassword] = useState(undefined);
+  const [username,  setUserName] = useState(undefined);
+  const [userphone,  setUserPhone] = useState(undefined);
+  const [email,  setUserEmail] = useState(undefined);
+  const [password,  setUserPassword] = useState(undefined);
 
-  const userData = {userId, userName, userPhone, userEmail, userPassword};
+  const userData = {username, userphone, email, password};
   // console.log(userData);
 
   const {
@@ -74,7 +73,7 @@ const UserPopup = (props) => {
   const loginUser = () => {
     userLogin()
     .then(res => {
-      // console.log(res);
+      console.log(res);
       props.setUser(res);
     })
     .catch(err => {
