@@ -31,16 +31,16 @@ const Buttons = (props) => {
   //   props.loggedIn && setPageMode('main')
   // }, [props.loggedIn])
 
-  const getClientTasks = () => {
-    tasksGetByClient()
-    .then((res) => {
-      props.setTasks(res);
-    })
-    .catch(err => {
-      err.json()
-      .then(err => console.log(err));
-    })
-  }
+  // const getClientTasks = () => {
+  //   tasksGetByClient()
+  //   .then((res) => {
+  //     props.setTasks(res);
+  //   })
+  //   .catch(err => {
+  //     err.json()
+  //     .then(err => console.log(err));
+  //   })
+  // }
 
   const showTasks = () => {
     setPageMode('tasks');
@@ -58,6 +58,7 @@ const Buttons = (props) => {
           {props.loggedIn && pageMode ==='main' && <Link className='main__navlink' to='/my-tasks' onClick={showTasks}>{mainButtonsData.showTasks}</Link>}
           {props.loggedIn && pageMode ==='tasks' && <Link className='main__navlink' to='/' onClick={hideTasks}>{mainButtonsData.showMainPage}</Link>}
           {props.loggedIn && <Button placeholder={mainButtonsData.createTask} onPress={props.showTaskForm}/>}
+          {!props.loggedIn && <p className='main__login-note'>Войдите или зарегистрируйтесь</p>}
         </div>
     </section>
   )
