@@ -20,7 +20,7 @@ const UserPopup = (props) => {
   const {
     userAuth, 
     userLogin,
-  } = useUserFetch(urlData.local, userData);
+  } = useUserFetch(urlData.network, userData);
 
   // popup open
   useEffect(() => {

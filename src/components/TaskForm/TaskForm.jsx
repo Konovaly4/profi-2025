@@ -31,7 +31,7 @@ const TaskForm = (props) => {
     taskCreate,
     taskUpdate,
     taskDelete
-  } = useTaskFetch(urlData.local, workData)
+  } = useTaskFetch(urlData.network, workData)
 
 
   // set work type
