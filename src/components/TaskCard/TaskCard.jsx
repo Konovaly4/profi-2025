@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import cn from 'classnames';
 import CloseButton from '../CloseButton/CloseButton';
 import AlertPopup from '../AlertPopup/AlertPopup';
@@ -12,6 +12,7 @@ const TaskCard = (props) => {
   const [workConfirmation, setWorkConfirmation] = useState('not-confirmed');
   const [alertVisibility, SetAlertVisibility] = useState(false);
   const [feedbackValue, setFeedbackValue] = useState('');
+  const [rating, setRating] = useState(0);
 
   // constants
   const workSubTypeList = taskFormSubtypeList[props.currentTask.type];
@@ -20,15 +21,20 @@ const TaskCard = (props) => {
 
 
   // console.log(workData)
-    // hooks
-    const {
-      tasksGet,
-      tasksGetByClient,
-      tasksGetByWorker,
-      taskCreate,
-      taskUpdate,
-      taskDelete
-    } = useTaskFetch(urlData.network, props.token, workData, props.user, worker)
+  // hooks
+  const {
+    tasksGet,
+    tasksGetByClient,
+    tasksGetByWorker,
+    taskCreate,
+    taskUpdate,
+    taskDelete
+  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker)
+
+  // set initial rating
+  useEffect(() => {
+    setRating(props.currentTask.rating);
+  }, [props.currentTask])
 
   // work status setter
   const setWorkStatus = () => {
@@ -56,9 +62,16 @@ const TaskCard = (props) => {
     setFeedbackValue(e.target.value);
   }
 
+  const changeRating = (e) => {
+    if (e.target.id == rating) {
+      setRating(e.target.id - 1);
+    } else setRating(e.target.id);
+  }
+
   const updateTask = (e) => {
     e.preventDefault();
     workData.feedback = feedbackValue;
+    workData.rating = rating;
     if (workConfirmation === 'not-confirmed') {
       workData.accepted = false;
       workData.completed = false;
@@ -99,12 +112,12 @@ const TaskCard = (props) => {
           workConfirmation === 'confirmed' ? taskButtonPlaceholders.confirmed : taskButtonPlaceholders.finished
           }</button>
         <textarea className='task-card__feedback' rows='6' placeholder={taskFormPlaceholders.clientFeedback} onChange={setFeedback}></textarea>
-        <div className='task-card__rating-container'>
-          <button className='task-card__rating-item' />
-          <button className='task-card__rating-item' />
-          <button className='task-card__rating-item' />
-          <button className='task-card__rating-item' />
-        </div>
+        <ul className='task-card__rating-container'>
+          <li id='1' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating >= 1})} onClick={changeRating} />
+          <li id='2' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating >= 2})} onClick={changeRating} />
+          <li id='3' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating >= 3})} onClick={changeRating} />
+          <li id='4' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating == 4})} onClick={changeRating} />
+        </ul>
         <div className='task-card__button-wrapper'>
           <button className='task-card__button task-card__button_save-button' onClick={updateTask}>{buttonData.save}</button>
           <button className='task-card__button task-card__button_delete-button' onClick={alertOpen} >{buttonData.delete}</button>

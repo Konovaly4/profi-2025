@@ -1,0 +1,23 @@
+.arrow {
+  margin: 0;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 50%;
+  outline: 0;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrow_left {
+  background-image: url('../../../images/arrow_left.svg');
+  margin-left: 130px;
+}
+
+.arrow_right {
+  background-image: url('../../../images/arrow_right.svg');
+  margin-right: 130px;
+}

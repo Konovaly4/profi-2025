@@ -95,6 +95,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  list-style-type: none;
 }
 
 .task-card__rating-item {
@@ -104,7 +105,6 @@
   padding: 0;
   border: 1px solid black;
   border-radius: 50%;
-  outline: 0;
   background-color: transparent;
 }
 
