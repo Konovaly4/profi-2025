@@ -11,11 +11,11 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: `${data.userName}`,
-        email: `${data.userEmail}`,
-        password: `${data.userPassword}`,
-        userphone: `${data.userPhone}`,
-        permission: `${data.userPermission}`
+        username: `${data.username}`,
+        email: `${data.email}`,
+        password: `${data.password}`,
+        userphone: `${data.userphone}`,
+        // permission: `${data.permission}`
       })
     })
     .then((res) => {
@@ -33,8 +33,8 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        identifier: `${data.userEmail}`,
-        password: `${data.userPassword}`
+        identifier: `${data.email}`,
+        password: `${data.password}`
       }) 
     })
     .then((res) => {
@@ -81,11 +81,11 @@ const useUserFetch = (url, data) => {
           'Authorization': `Bearer ${data.token}`
         },
         body: JSON.stringify({
-          username: `${data.userName}`,
-          email: `${data.userEmail}`,
-          password: `${data.userPassword}`,
-          userphone: `${data.userPhone}`,
-          permission: `${data.userPermission}`
+          username: `${data.username}`,
+          email: `${data.email}`,
+          password: `${data.password}`,
+          userphone: `${data.userphone}`,
+          permission: `${data.permission}`
         })
       })
       .then((res) => {

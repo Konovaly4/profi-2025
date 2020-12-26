@@ -10,7 +10,7 @@ import Poem from './Poem/Poem';
 import Reviews from './Reviews/Reviews';
 import Footer from './Footer/Footer';
 import TaskForm from './TaskForm/TaskForm';
-import TaskCard from './TaskCard/TaskCard';
+// import TaskCard from './TaskCard/TaskCard';
 import Mytasks from './Mytasks/Mytasks';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 // constants
@@ -21,12 +21,12 @@ import './App.css';
 function App() {
   // select states
   const [taskShow, setTaskShow] = useState(false);
-  const [taskCardShow, setTaskCardShow] = useState(false);
+  // const [taskCardShow, setTaskCardShow] = useState(false);
   const [user, setUser] = useState({
-    userId: undefined,
-    userName: undefined,
-    userPhone: undefined,
-    userEmail: undefined,
+    id: undefined,
+    username: undefined,
+    userphone: undefined,
+    email: undefined,
   });
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentTask, setCurrentTask] = useState(undefined);
@@ -67,25 +67,14 @@ function App() {
     setTaskShow(false)
   }
 
-  // show task card popup
-  const showTaskCardPopup = (num) => {
-    setCurrentTask(num)
-    setTaskCardShow(true)
-  }
-
-  // hide task popup
-  const hideTaskCardPopup = () => {
-    setTaskCardShow(false)
-  }
-
   // fetch user
   const setCurrentUser = (res) => {
     localStorage.setItem('jwt', JSON.stringify(res.jwt))
     setUser({
-      userId: res.user.id,
-      userName: res.user.username,
-      userPhone: res.user.userphone,
-      userEmail: res.user.email,
+      id: res.user.id,
+      username: res.user.username,
+      userphone: res.user.userphone,
+      email: res.user.email,
     });
     setLoggedIn(true);
   }
@@ -93,10 +82,10 @@ function App() {
   const logout = (res) => {
     localStorage.removeItem('jwt')
     setUser({
-      userId: undefined,
-      userName: undefined,
-      userPhone: undefined,
-      userEmail: undefined,
+      id: undefined,
+      username: undefined,
+      userphone: undefined,
+      email: undefined,
     });
     setLoggedIn(false);
   }
@@ -116,7 +105,7 @@ function App() {
         <ProtectedRoute path='/my-tasks' 
           loggedIn={loggedIn} 
           component={Mytasks} 
-          onTaskShow={showTaskCardPopup} 
+          // onTaskShow={showTaskCardPopup} 
           // tasks={taskList} 
           user={user} 
           token={token} />
@@ -126,7 +115,7 @@ function App() {
       </Switch>
       <Footer />
       <TaskForm visibility={taskShow} formClose={hideTaskPopup} user={user} token={token} />
-      <TaskCard visibility={taskCardShow} formClose={hideTaskCardPopup} />
+      {/* <TaskCard visibility={taskCardShow} formClose={hideTaskCardPopup} /> */}
     </div>
   );
 }

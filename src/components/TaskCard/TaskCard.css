@@ -87,6 +87,31 @@
   width: 100%; 
 }
 
+.task-card__rating-container {
+  width: 70%;
+  height: 50px;
+  margin: 0 auto 20px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-card__rating-item {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  border-radius: 50%;
+  outline: 0;
+  background-color: transparent;
+}
+
+.task-card__rating-item_active {
+  background-color: yellow;
+}
+
 .task-card__button-wrapper {
   margin: 0;
   padding: 0;
