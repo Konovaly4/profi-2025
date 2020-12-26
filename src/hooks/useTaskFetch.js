@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const useTaskFetch = (url, data) => {
+const useTaskFetch = (url, token, workData, userData, workerData) => {
   // getting all tasks
   const tasksGet = () => {
     return fetch(`${url}tasks`, {
@@ -9,7 +9,7 @@ const useTaskFetch = (url, data) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${data.userToken}`,
+        'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
       return (res.ok ? res.json() : Promise.reject(res));
@@ -18,13 +18,13 @@ const useTaskFetch = (url, data) => {
   
   // get client's tasks
   const tasksGetByClient = () => {
-    return fetch(`${url}tasks?client_name=${data.userName}`, {
+    return fetch(`${url}tasks?client_name=${userData.userName}`, {
       redirect: 'follow',
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${data.userToken}`,
+        'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
       return (res.ok ? res.json() : Promise.reject(res));
@@ -33,13 +33,13 @@ const useTaskFetch = (url, data) => {
 
     // get worker's tasks
     const tasksGetByWorker = () => {
-      return fetch(`${url}tasks?client_name=${data.workerName}`, {
+      return fetch(`${url}tasks?client_name=${workerData.workerName}`, {
         redirect: 'follow',
         method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${data.userToken}`,
+          'Authorization': `Bearer ${token}`,
       }})
       .then((res) => {
         return (res.ok ? res.json() : Promise.reject(res));
@@ -54,12 +54,12 @@ const useTaskFetch = (url, data) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${data.userToken}`,
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          type: `${data.workType}`,
-          subtype: `${data.workSubtype}`,
-          description: `${data.workDescription}`,
+          type: `${workData.workType}`,
+          subtype: `${workData.workSubtype}`,
+          description: `${workData.workDescription}`,
           assepted: false,
           completed: false,
           rating: '0',
@@ -67,9 +67,9 @@ const useTaskFetch = (url, data) => {
           worker_name: null,
           worker_phone: null,
           worker_email: null,
-          client_name: `${data.userName}`,
-          client_phone: `${data.userPhone}`,
-          client_email: `${data.userEmail}`,
+          client_name: `${userData.userName}`,
+          client_phone: `${userData.userPhone}`,
+          client_email: `${userData.userEmail}`,
         })
       })
       .then((res) => {
@@ -85,22 +85,22 @@ const useTaskFetch = (url, data) => {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${data.userToken}`,
+              'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-              type: `${data.workType}`,
-              subtype: `${data.workSubtype}`,
-              description: `${data.workDescription}`,
-              assepted: `${data.assepted}`,
-              completed: `${data.completed}`,
-              rating: `${data.rating}`,
-              feedback: `${data.feedback}`,
-              worker_name: `${data.workerName}`,
-              worker_phone: `${data.workerPhone}`,
-              worker_email: `${data.workerEmail}`,
-              client_name: `${data.userName}`,
-              client_phone: `${data.userPhone}`,
-              client_email: `${data.userEmail}`,
+              type: `${workData.workType}`,
+              subtype: `${workData.workSubtype}`,
+              description: `${workData.workDescription}`,
+              assepted: `${workData.assepted}`,
+              completed: `${workData.completed}`,
+              rating: `${workData.rating}`,
+              feedback: `${workData.feedback}`,
+              worker_name: `${workerData.DataName}`,
+              worker_phone: `${workerData.workDataerPhone}`,
+              worker_email: `${workerData.workerEmDataail}`,
+              client_name: `${userData.userName}`,
+              client_phone: `${userData.userPhone}`,
+              client_email: `${userData.userEmail}`,
             })
           })
           .then((res) => {
@@ -116,7 +116,7 @@ const useTaskFetch = (url, data) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${data.userToken}`,
+          'Authorization': `Bearer ${token}`,
       }})
       .then((res) => {
         return (res.ok ? res.json() : Promise.reject(res));

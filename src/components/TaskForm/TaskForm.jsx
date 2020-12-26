@@ -16,12 +16,10 @@ const TaskForm = (props) => {
   const [workSubtype, setWorkSubtype] = useState(0);
   const [workDescription, setWorkDescription] = useState(0);
   // collect user data
-  const userName = props.user.userName;
-  const userPhone = props.user.userPhone;
-  const userEmail = props.user.userEmail; 
-  const userToken = props.user.userToken;
+  const userData = props.user;
   // create common data
-  const workData = {workType, workSubtype, workDescription, userName, userPhone, userEmail, userToken}
+  const workData = {workType, workSubtype, workDescription};
+  const workerData = undefined;
 
   // use fetch hooks
   const {
@@ -31,7 +29,7 @@ const TaskForm = (props) => {
     taskCreate,
     taskUpdate,
     taskDelete
-  } = useTaskFetch(urlData.network, workData)
+  } = useTaskFetch(urlData.network, props.token, workData, userData, workerData)
 
 
   // set work type
@@ -88,7 +86,9 @@ const TaskForm = (props) => {
     // click to send
     const formSubmit = (e) => {
       e.preventDefault();
+      // console.log('token - ' + props.token);
       createTask();
+      props.setSubmitState();
       props.formClose();
     }
 
@@ -100,7 +100,7 @@ const TaskForm = (props) => {
 
   return (
     <div className={cn('task-form-wrapper', {'task-form-wrapper_visible': props.visibility})} onClick={closeByWrapper}>
-      <section className='task-form'>
+      <form className='task-form' onSubmit={formSubmit}>
         <h2 className='task-form__title'>{taskFormData.title}</h2>
         <ul className='task-form__list'>
           <li className='task-form__list-item'>
@@ -129,10 +129,10 @@ const TaskForm = (props) => {
           </li> */}
         </ul>
         <p className='task-form__field-note'>Ваши имя, телефон и email будут указаны в заявке</p>
-        <button className='task-form__submit-button' onClick={formSubmit}>{buttonData.submit}</button>
+        <button className='task-form__submit-button'>{buttonData.submit}</button>
         <CloseButton onPress={alertOpen} />
         <AlertPopup visibility={alertVisibility} title={alertPopupData.dataFormClose} onYesClick={alertCloseYesOption} onNoClick={alertCloseNoOption} />
-      </section>
+      </form>
     </div>
   )
 }
