@@ -9,9 +9,10 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        // 'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
+      console.log(res);
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }

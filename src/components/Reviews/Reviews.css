@@ -18,31 +18,21 @@
   text-transform: uppercase;
 }
 
-.reviews__list {
-  width: calc(100% - 40px);
+.reviews__container {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-}
-
-.reviews__item {
-  width: calc((100% - 80px) / 3);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.reviews__content {
-  font-weight: 400;
-  font-size: 31px;
-  line-height: calc(36 /31);
-  background-color: #C4C4C4;
-  min-height: 500px;
-  width: 100%;
-  text-align: center;
+.reviews__list {
+  width: calc(100% - 40px);
+  margin: 0 30px;
   padding: 0;
-  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
 }
