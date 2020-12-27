@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import UserPopup from '../UserPopup/UserPopup';
 import './Header.css';
+import Header__img from '../../images/logo.svg';
 
 const Header = (props) => {
   // collecting states
@@ -18,7 +19,7 @@ const Header = (props) => {
   }
 
   // clear reg state
-  const clearRegState = () => { 
+  const clearRegState = () => {
     setUserState('');
   }
 
@@ -26,13 +27,14 @@ const Header = (props) => {
     <header className='header'>
       <div className='header__container'>
         <a className='header__link' href='#'>
-        <img className='header__img' src='#' alt='logo' />
+        <img className='header__img' src={Header__img} alt='Логотип' />
+        Гражданин поэт
         </a>
         <ul className='header__user-navigation'>
-          { !props.loggedIn && <li className='header__user-navigation__item' onClick={setLoginState}><a className='header__login-link' href='#'>Вход</a></li>}
-          { !props.loggedIn && <li className='header__user-navigation__item' onClick={setRegState}><a className='header__signin-link' href='#'>Регистрация</a></li>}
+          { !props.loggedIn && <li className='header__user-navigation-item' onClick={setLoginState}><a className='header__login-link' href='#'>Вход</a></li>}
+          { !props.loggedIn && <li className='header__user-navigation-item' onClick={setRegState}><a className='header__signin-link' href='#'>Регистрация</a></li>}
           { props.loggedIn && <p className='header__user-data'>{props.user.username}</p>}
-          { props.loggedIn && <li className='header__user-navigation__item'><button className='header__logout-button' onClick={props.logout}>Выход</button></li>}
+          { props.loggedIn && <li className='header__user-navigation-item'><a className='header__logout-link' onClick={props.logout} aria-label='Выход'></a></li>}
         </ul>
         {props.user.userToken && <p>Привет, {props.user.userName}</p>}
         <UserPopup state={userState} setUserState={setUserState} setLoginState={setLoginState} clearRegState={clearRegState} setUser={props.setUser}/>
