@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/profi-2025/static/css/main.0e253d5c.chunk.css",
-    "main.js": "/profi-2025/static/js/main.1b5acb5f.chunk.js",
-    "main.js.map": "/profi-2025/static/js/main.1b5acb5f.chunk.js.map",
+    "main.css": "/profi-2025/static/css/main.0492ca71.chunk.css",
+    "main.js": "/profi-2025/static/js/main.ae7fd25b.chunk.js",
+    "main.js.map": "/profi-2025/static/js/main.ae7fd25b.chunk.js.map",
     "runtime-main.js": "/profi-2025/static/js/runtime-main.a8a4ab8f.js",
     "runtime-main.js.map": "/profi-2025/static/js/runtime-main.a8a4ab8f.js.map",
     "static/js/2.89b50e77.chunk.js": "/profi-2025/static/js/2.89b50e77.chunk.js",
@@ -10,22 +10,23 @@
     "static/js/3.62c96e8e.chunk.js": "/profi-2025/static/js/3.62c96e8e.chunk.js",
     "static/js/3.62c96e8e.chunk.js.map": "/profi-2025/static/js/3.62c96e8e.chunk.js.map",
     "index.html": "/profi-2025/index.html",
-    "static/css/main.0e253d5c.chunk.css.map": "/profi-2025/static/css/main.0e253d5c.chunk.css.map",
+    "static/css/main.0492ca71.chunk.css.map": "/profi-2025/static/css/main.0492ca71.chunk.css.map",
     "static/js/2.89b50e77.chunk.js.LICENSE.txt": "/profi-2025/static/js/2.89b50e77.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/profi-2025/static/media/RussoOne-Regular.eeee4979.ttf",
     "static/media/About.css": "/profi-2025/static/media/about_bgi.6cb1ec04.svg",
-    "static/media/Arrow.css": "/profi-2025/static/media/arrow_right.b2589451.svg",
-    "static/media/CloseButton.css": "/profi-2025/static/media/cancel.b273ae9b.svg",
+    "static/media/Arrow.css": "/profi-2025/static/media/arrow_right.8dc381ef.svg",
+    "static/media/CloseButton.css": "/profi-2025/static/media/cancel.097f1ea4.svg",
     "static/media/Header.css": "/profi-2025/static/media/user.8850ddd1.svg",
     "static/media/logo.507c0c8a.svg": "/profi-2025/static/media/logo.507c0c8a.svg",
     "static/media/main__bgi.29824270.jpg": "/profi-2025/static/media/main__bgi.29824270.jpg",
     "static/media/Poem.css": "/profi-2025/static/media/quotes.c3525f4d.svg",
-    "static/media/popup-label.cfa01128.svg": "/profi-2025/static/media/popup-label.cfa01128.svg",
+    "static/media/popup-label.3ec26d83.svg": "/profi-2025/static/media/popup-label.3ec26d83.svg",
     "static/media/review-avatar.02c8b300.jpg": "/profi-2025/static/media/review-avatar.02c8b300.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a8a4ab8f.js",
     "static/js/2.89b50e77.chunk.js",
-    "static/css/main.0e253d5c.chunk.css",
-    "static/js/main.1b5acb5f.chunk.js"
+    "static/css/main.0492ca71.chunk.css",
+    "static/js/main.ae7fd25b.chunk.js"
   ]
 }
