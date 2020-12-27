@@ -28,15 +28,14 @@
 }
 
 .alert-popup__title {
-  margin: 0 0 30px;
-  padding: 0;
-  font-family: Didot;
+  margin: 0 0 66px;
   font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 22px;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: calc(36 / 30);
+  text-transform: uppercase;
   text-align: center;
-  color: #000000;
 }
 
 .alert-popup__button-wrapper {
@@ -47,16 +46,32 @@
 }
 
 .alert-popup__button {
-  margin: 0;
-  padding: 0;
-  width: 150px;
-  height: 50px;
+  margin: 30px 0;
+  padding: 15px 90px;
+  font-style: normal;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: calc(29 / 24);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  border: 10px solid #E2001D;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  transition: opacity .4s linear;
 }
 
-.alert-popup__button_yes-button {
-  background-color: chartreuse;
+.alert-popup__button:hover {
+  cursor: pointer;
+  opacity: .6;
 }
 
-.alert-popup__button_no-button {
-  background-color: red;
+.alert-popup__button_yes-button:hover {
+  border-color: chartreuse;
+}
+
+.alert-popup__button_no-button:hover {
+  border-color: red;
 }

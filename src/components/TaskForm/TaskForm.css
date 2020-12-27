@@ -19,26 +19,25 @@
 .task-form {
   width: 70%;
   margin: 0;
-  padding: 0 30px;
+  padding: 50px;
   background-color: #FFF;
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
 }
 
 .task-form__title {
-  margin: 30px 0 30px;
-  font-family: Didot;
+  margin: 0 0 66px;
   font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 55px;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: calc(30 / 36);
   text-transform: uppercase;
-  color: #000000;
 }
 
 .task-form__list {
@@ -59,35 +58,52 @@
 
 .task-form__field-note {
   margin: 0 0 5px;
-  font-family: Didot;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: calc(27 / 22);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  color: black;
   font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 20px;
-  letter-spacing: -0.01em;
-  color: #223157;
 }
 
 .task-form__field-item {
   width: 60%;
-  font-family: Didot;
+  margin: 0 0 24px;
+  padding: 14px 28px;
+  width: 100%;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: calc(27 / 22);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  color: black;
   font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 20px;
-  letter-spacing: -0.01em;
-  color: #223157;
+  box-sizing: border-box;
+  border: 3px solid #E2001D;
 }
 
 .task-form__submit-button {
-  height: 40px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  font-family: Didot;
+  margin: 30px 0;
+  padding: 15px 90px;
   font-style: normal;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 30px;
-  background-color: rgb(251, 255, 0);
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: calc(29 / 24);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  border: 10px solid #E2001D;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  transition: opacity .4s linear;
+}
+
+.task-form__submit-button:hover {
+  cursor: pointer;
+  opacity: .6;
 }
