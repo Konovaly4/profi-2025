@@ -3,7 +3,9 @@ import cn from 'classnames';
 import CloseButton from '../CloseButton/CloseButton';
 import AlertPopup from '../AlertPopup/AlertPopup';
 import useTaskFetch from '../../hooks/useTaskFetch';
+import useQuoteFetch from '../../hooks/useQuoteFetch';
 import {urlData} from '../../constants/urlData';
+import {ratingValue} from '../../constants/ratingValue';
 import {taskFormPlaceholders, taskButtonPlaceholders, buttonData, alertPopupData, taskFormTypeList, taskFormSubtypeList} from '../../constants/formData';
 import './TaskCard.css'
 
@@ -13,28 +15,49 @@ const TaskCard = (props) => {
   const [alertVisibility, SetAlertVisibility] = useState(false);
   const [feedbackValue, setFeedbackValue] = useState('');
   const [rating, setRating] = useState(0);
+  const [quote, setQuote] = useState('');
 
   // constants
   const workSubTypeList = taskFormSubtypeList[props.currentTask.type];
   const workData = props.currentTask;
   const worker = undefined;
 
-
-  // console.log(workData)
   // hooks
+  // task hook
   const {
-    tasksGet,
-    tasksGetByClient,
-    tasksGetByWorker,
-    taskCreate,
     taskUpdate,
     taskDelete
-  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker)
+  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker);
+
+  // qoute hook
+  const {quoteSearch} = useQuoteFetch(urlData.quoteUrl, feedbackValue);
 
   // set initial rating
   useEffect(() => {
     setRating(props.currentTask.rating);
   }, [props.currentTask])
+
+  //set feedback value
+  useEffect(() => {
+    const keywordList = ratingValue[rating];
+    const keyword = rating == 0 ? ratingValue[0] :  keywordList[Math.round(Math.random() * (keywordList.length - 1))];
+    setFeedbackValue(keyword);
+    console.log('feedbackval - ' + feedbackValue);
+  }, [rating])
+
+  // set quote
+  useEffect(() => {
+    if (rating == 0) {
+      setQuote(feedbackValue);
+    }
+    quoteSearch()
+    .then(data => {
+      console.log('data - ' + data);
+      if (!data) return;
+      setQuote(data);
+    })
+    console.log('quote - ' + quote);
+  }, [feedbackValue])
 
   // work status setter
   const setWorkStatus = () => {
@@ -68,9 +91,24 @@ const TaskCard = (props) => {
     } else setRating(e.target.id);
   }
 
+  // const selectQuote = (e) => {
+  //   e.preventDefault();
+  //   if (rating == 0) {
+  //     setQuote(feedbackValue);
+  //   }
+  //   quoteSearch()
+  //   .then(data => {
+  //     console.log('data - ' + data);
+  //     if (!data) return;
+  //     setQuote(data);
+  //   })
+  //   console.log('quote - ' + quote);
+  //   props.onClose();
+  // }
+
   const updateTask = (e) => {
     e.preventDefault();
-    workData.feedback = feedbackValue;
+    workData.feedback = quote;
     workData.rating = rating;
     if (workConfirmation === 'not-confirmed') {
       workData.accepted = false;
