@@ -14,10 +14,14 @@
 
 .arrow_left {
   background-image: url('../../../images/arrow_left.svg');
-  margin-left: 130px;
+  position: absolute;
+  top: 64%;
+  right: 92%;
 }
 
 .arrow_right {
   background-image: url('../../../images/arrow_right.svg');
-  margin-right: 130px;
+  position: absolute;
+  top: 64%;
+  left: 92%;
 }
