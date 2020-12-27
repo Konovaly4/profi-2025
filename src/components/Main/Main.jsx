@@ -1,28 +1,69 @@
-import React from 'react';
-import avatar from '../../images/avatar.jpg';
+import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import useTaskFetch from '../../hooks/useTaskFetch';
+import Button from '../Button/Button';
+import {mainButtonsData} from '../../constants/mainButtonsData';
+import {urlData} from '../../constants/urlData';
 import './Main.css';
+import Main__img from '../../images/main__bgi.jpg';
 
-const Main = () => {
+const Buttons = (props) => {
+  const userName = props.user.userName;
+  const userPhone = props.user.userPhone;
+  const userEmail = props.user.userEmail;
+  const userToken = props.user.userToken;
+
+  const userData = {userName, userPhone, userEmail, userToken};
+
+  const {
+    tasksGet,
+    tasksGetByClient,
+    tasksGetByWorker,
+    taskCreate,
+    taskUpdate,
+    taskDelete
+  } = useTaskFetch(urlData.local, userData);
+
+  // state of link status and page appearance
+  const [pageMode, setPageMode] = useState('main');
+
+  // set page mode
+  // useEffect(() => {
+  //   props.loggedIn && setPageMode('main')
+  // }, [props.loggedIn])
+
+  // const getClientTasks = () => {
+  //   tasksGetByClient()
+  //   .then((res) => {
+  //     props.setTasks(res);
+  //   })
+  //   .catch(err => {
+  //     err.json()
+  //     .then(err => console.log(err));
+  //   })
+  // }
+
+  const showTasks = () => {
+    setPageMode('tasks');
+  }
+
+  const hideTasks = () => {
+    setPageMode('main');
+  }
+
 
   return (
-    <main className='main-content'>
-      <section className='master'>
-        <div className='master__main-info'>
-          <p className='master__subtitle'>Мастер недели</p>
-          <h2 className='master__title'>Илья Обломов</h2>
-          <h3 className='master__quote-title'>Заголовок рандомный стих в виде цитаты:</h3>
-          <blockquote className='master__quote'>Какой нибудь стих примерно такой по размеру, как здесь написан оформленный ввиде цитаты. Какой нибудь стих примерно такой по размеру, как здесь написан</blockquote>
-          <p className='master__profile'>Какой нибудь стих примерно такой по размеру, как здесь написан</p>
-          <p className='master__specialty'>Какой нибудь стих примерно такой по размеру, как здесь написан</p>
-          <p className='master__rating'>Какой нибудь стих примерно такой по размеру, как здесь написан</p>
+    <section className='main'>
+        <h1 className='main__title'>Гражданин, найди мастера!</h1>
+        <img className='main__img' src={Main__img} alt='Найти мастера' />
+        <div className='main__buttons-container'>
+          {props.loggedIn && pageMode ==='main' && <Link className='main__navlink' to='/my-tasks' onClick={showTasks}>{mainButtonsData.showTasks}</Link>}
+          {props.loggedIn && pageMode ==='tasks' && <Link className='main__navlink' to='/' onClick={hideTasks}>{mainButtonsData.showMainPage}</Link>}
+          {props.loggedIn && <Button placeholder={mainButtonsData.createTask} onPress={props.showTaskForm}/>}
+          {!props.loggedIn && <p className='main__login-note'>Войдите или зарегистрируйтесь</p>}
         </div>
-        <div className='master__add-info'>
-          <img className='master__avatar' src={avatar} alt='Фотография мастера недели' />
-          <button className='master__button' type='submit'>Button</button>
-        </div>
-      </section>
-    </main>
+    </section>
   )
 }
 
-export default Main;
+export default Buttons;
