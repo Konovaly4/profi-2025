@@ -9,7 +9,8 @@
   display: none;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, .4);
+  background-color: rgba(255, 255, 255, .8);
+  z-index: 1;
 }
 
 .user-popup__wrapper_visible {
@@ -18,39 +19,47 @@
 
 .user-popup {
   margin: 0;
-  padding: 0;
+  padding: 50px;
   width: 50%;
-  padding: 20px;
   border: 1px solid black;
   border-radius: 20px;
   background-color: #FFF;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
+  box-sizing: border-box;
 }
 
 .user-popup__title {
-  margin: 0 0 30px;
-  font-family: Didot;
+  margin: 0 0 66px;
   font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 55px;
-  text-transform: up
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: calc(30 / 36);
+  text-transform: uppercase;
 }
 
 .user-popup__input {
-  margin: 0 0 20px;
+  margin: 0 0 54px;
+  padding: 24px 28px;
   width: 100%;
-  font-family: Didot;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: calc(27 / 22);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  color: black;
   font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 20px;
-  letter-spacing: -0.01em;
-  color: #223157;
+  box-sizing: border-box;
+  border: 3px solid #E2001D;
+}
+
+.user-popup__input:last-child {
+  margin-bottom: 98px;
 }
 
 .user-popup__button-wrapper {
@@ -63,13 +72,24 @@
 }
 
 .user-popup__reg-button {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  height: 50px;
-  font-family: Didot;
+  margin: 0 0 30px;
+  padding: 15px 90px;
   font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 30px;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: calc(29 / 24);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  border: 10px solid #E2001D;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  transition: opacity .4s linear;
+}
+
+.user-popup__reg-button:hover {
+  cursor: pointer;
+  opacity: .6;
 }
