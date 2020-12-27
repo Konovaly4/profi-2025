@@ -31,6 +31,7 @@
 .task-card__title {
   margin: 0 0 20px;
   padding: 0;
+  width: 70%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -85,6 +86,10 @@
   background-color: transparent;
 }
 
+.task-card__confirm-button:hover {
+  cursor: pointer;
+}
+
 .task-card__rating-container {
   width: 70%;
   height: 50px;
@@ -103,6 +108,10 @@
   padding: 0;
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   background-color: #000000;
+}
+
+.task-card__rating-item:hover {
+  cursor: pointer;
 }
 
 .task-card__rating-item_active {
@@ -131,6 +140,10 @@
   letter-spacing: 0.044em;
   text-transform: uppercase; 
   color: #FB0000;
+}
+
+.task-card__button:hover {
+  cursor: pointer;
 }
 
 .task-card__button_save-button {
