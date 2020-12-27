@@ -12,10 +12,10 @@ const useQuoteFetch = (url, keyword) => {
       return( res.ok ? res.json() : Promise.reject(res));
     })
     .then(data => {
-      console.log('data - ' + data);
       if (!data || data.length === 0) return;
       if (data.length === 1) return (data[0].fields.text);
-      return data[Math.round(Math.random() * data.length)].fields.text;
+      console.log('fetchedData - ' + data);
+      return data[Math.round(Math.random() * (data.length - 1))].fields.text;
     })
     .catch(err => console.log(err));
   }

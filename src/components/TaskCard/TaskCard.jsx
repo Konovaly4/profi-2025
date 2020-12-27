@@ -4,8 +4,8 @@ import CloseButton from '../CloseButton/CloseButton';
 import AlertPopup from '../AlertPopup/AlertPopup';
 import useTaskFetch from '../../hooks/useTaskFetch';
 import useQuoteFetch from '../../hooks/useQuoteFetch';
-import useQuoteSelect from '../../hooks/useQuoteSelect';
 import {urlData} from '../../constants/urlData';
+import {ratingValue} from '../../constants/ratingValue';
 import {taskFormPlaceholders, taskButtonPlaceholders, buttonData, alertPopupData, taskFormTypeList, taskFormSubtypeList} from '../../constants/formData';
 import './TaskCard.css'
 
@@ -15,7 +15,6 @@ const TaskCard = (props) => {
   const [alertVisibility, SetAlertVisibility] = useState(false);
   const [feedbackValue, setFeedbackValue] = useState('');
   const [rating, setRating] = useState(0);
-  const [quoteArr, setQuoteArr] = useState([]);
   const [quote, setQuote] = useState('');
 
   // constants
@@ -33,13 +32,32 @@ const TaskCard = (props) => {
   // qoute hook
   const {quoteSearch} = useQuoteFetch(urlData.quoteUrl, feedbackValue);
 
-  // quote select hook
-  const {quoteSelect} = useQuoteSelect(quoteArr)
-
   // set initial rating
   useEffect(() => {
     setRating(props.currentTask.rating);
   }, [props.currentTask])
+
+  //set feedback value
+  useEffect(() => {
+    const keywordList = ratingValue[rating];
+    const keyword = rating == 0 ? ratingValue[0] :  keywordList[Math.round(Math.random() * (keywordList.length - 1))];
+    setFeedbackValue(keyword);
+    console.log('feedbackval - ' + feedbackValue);
+  }, [rating])
+
+  // set quote
+  useEffect(() => {
+    if (rating == 0) {
+      setQuote(feedbackValue);
+    }
+    quoteSearch()
+    .then(data => {
+      console.log('data - ' + data);
+      if (!data) return;
+      setQuote(data);
+    })
+    console.log('quote - ' + quote);
+  }, [feedbackValue])
 
   // work status setter
   const setWorkStatus = () => {
@@ -73,38 +91,40 @@ const TaskCard = (props) => {
     } else setRating(e.target.id);
   }
 
-  const selectQuote = (e) => {
-    e.preventDefault();
-    quoteSearch()
-    .then(data => {
-      console.log('data - ' + data);
-      if (!data || data.length === 0) return;
-      if (data.length === 1) return (data[0].fields.text);
-      return data[Math.round(Math.random() * data.length)].fields.text;
-    })
-
-    props.onClose();
-  }
-
-  // const updateTask = (e) => {
+  // const selectQuote = (e) => {
   //   e.preventDefault();
-  //   workData.feedback = feedbackValue;
-  //   workData.rating = rating;
-  //   if (workConfirmation === 'not-confirmed') {
-  //     workData.accepted = false;
-  //     workData.completed = false;
-  //   } else if (workConfirmation === 'confirmed') {
-  //     workData.accepted = true;
-  //     workData.completed = false;
-  //   }else if (workConfirmation === 'done') {
-  //     workData.accepted = true;
-  //     workData.completed = true;
-  //   };
-  //   taskUpdate()
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
+  //   if (rating == 0) {
+  //     setQuote(feedbackValue);
+  //   }
+  //   quoteSearch()
+  //   .then(data => {
+  //     console.log('data - ' + data);
+  //     if (!data) return;
+  //     setQuote(data);
+  //   })
+  //   console.log('quote - ' + quote);
   //   props.onClose();
   // }
+
+  const updateTask = (e) => {
+    e.preventDefault();
+    workData.feedback = quote;
+    workData.rating = rating;
+    if (workConfirmation === 'not-confirmed') {
+      workData.accepted = false;
+      workData.completed = false;
+    } else if (workConfirmation === 'confirmed') {
+      workData.accepted = true;
+      workData.completed = false;
+    }else if (workConfirmation === 'done') {
+      workData.accepted = true;
+      workData.completed = true;
+    };
+    taskUpdate()
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    props.onClose();
+  }
 
   const deleteTask = (e) => {
     e.preventDefault();
@@ -137,7 +157,7 @@ const TaskCard = (props) => {
           <li id='4' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating == 4})} onClick={changeRating} />
         </ul>
         <div className='task-card__button-wrapper'>
-          <button className='task-card__button task-card__button_save-button' onClick={selectQuote}>{buttonData.save}</button>
+          <button className='task-card__button task-card__button_save-button' onClick={updateTask}>{buttonData.save}</button>
           <button className='task-card__button task-card__button_delete-button' onClick={alertOpen} >{buttonData.delete}</button>
         </div>
         <CloseButton onPress={props.onClose} />
