@@ -12,7 +12,6 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         // 'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
-      console.log(res);
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
