@@ -1,23 +1,30 @@
 {
   "files": {
-    "main.css": "/profi-2025/static/css/main.ee4afd4d.chunk.css",
-    "main.js": "/profi-2025/static/js/main.b636b26d.chunk.js",
-    "main.js.map": "/profi-2025/static/js/main.b636b26d.chunk.js.map",
-    "runtime-main.js": "/profi-2025/static/js/runtime-main.91a246bb.js",
-    "runtime-main.js.map": "/profi-2025/static/js/runtime-main.91a246bb.js.map",
-    "static/js/2.bf87470c.chunk.js": "/profi-2025/static/js/2.bf87470c.chunk.js",
-    "static/js/2.bf87470c.chunk.js.map": "/profi-2025/static/js/2.bf87470c.chunk.js.map",
-    "static/js/3.1b03fe9b.chunk.js": "/profi-2025/static/js/3.1b03fe9b.chunk.js",
-    "static/js/3.1b03fe9b.chunk.js.map": "/profi-2025/static/js/3.1b03fe9b.chunk.js.map",
+    "main.css": "/profi-2025/static/css/main.30f52f72.chunk.css",
+    "main.js": "/profi-2025/static/js/main.263034d3.chunk.js",
+    "main.js.map": "/profi-2025/static/js/main.263034d3.chunk.js.map",
+    "runtime-main.js": "/profi-2025/static/js/runtime-main.a8a4ab8f.js",
+    "runtime-main.js.map": "/profi-2025/static/js/runtime-main.a8a4ab8f.js.map",
+    "static/js/2.fdc88803.chunk.js": "/profi-2025/static/js/2.fdc88803.chunk.js",
+    "static/js/2.fdc88803.chunk.js.map": "/profi-2025/static/js/2.fdc88803.chunk.js.map",
+    "static/js/3.62c96e8e.chunk.js": "/profi-2025/static/js/3.62c96e8e.chunk.js",
+    "static/js/3.62c96e8e.chunk.js.map": "/profi-2025/static/js/3.62c96e8e.chunk.js.map",
     "index.html": "/profi-2025/index.html",
-    "static/css/main.ee4afd4d.chunk.css.map": "/profi-2025/static/css/main.ee4afd4d.chunk.css.map",
-    "static/js/2.bf87470c.chunk.js.LICENSE.txt": "/profi-2025/static/js/2.bf87470c.chunk.js.LICENSE.txt",
-    "static/media/CloseButton.css": "/profi-2025/static/media/Close-logo.04771cd8.svg"
+    "static/css/main.30f52f72.chunk.css.map": "/profi-2025/static/css/main.30f52f72.chunk.css.map",
+    "static/js/2.fdc88803.chunk.js.LICENSE.txt": "/profi-2025/static/js/2.fdc88803.chunk.js.LICENSE.txt",
+    "static/media/CloseButton.css": "/profi-2025/static/media/Close-logo.04771cd8.svg",
+    "static/media/About.css": "/profi-2025/static/media/about_bgi.6cb1ec04.svg",
+    "static/media/Arrow.css": "/profi-2025/static/media/arrow_right.b2589451.svg",
+    "static/media/Header.css": "/profi-2025/static/media/user.8850ddd1.svg",
+    "static/media/logo.507c0c8a.svg": "/profi-2025/static/media/logo.507c0c8a.svg",
+    "static/media/main__bgi.29824270.jpg": "/profi-2025/static/media/main__bgi.29824270.jpg",
+    "static/media/Poem.css": "/profi-2025/static/media/quotes.c3525f4d.svg",
+    "static/media/review-avatar.02c8b300.jpg": "/profi-2025/static/media/review-avatar.02c8b300.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.91a246bb.js",
-    "static/js/2.bf87470c.chunk.js",
-    "static/css/main.ee4afd4d.chunk.css",
-    "static/js/main.b636b26d.chunk.js"
+    "static/js/runtime-main.a8a4ab8f.js",
+    "static/js/2.fdc88803.chunk.js",
+    "static/css/main.30f52f72.chunk.css",
+    "static/js/main.263034d3.chunk.js"
   ]
 }
