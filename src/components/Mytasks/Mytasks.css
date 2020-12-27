@@ -12,7 +12,7 @@
 
 .mytasks__container {
   width: 80%;
-  margin: 0 0 50px;
+  margin: 0 0 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .mytasks__title {
-  margin: 82px auto;
+  margin: 0 auto;
   padding: 0;
   font-family: 'Russo One', Arial, sans-serif;
   font-weight: 400;
