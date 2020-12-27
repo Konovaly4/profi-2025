@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // components
 import Header from './Header/Header';
 import Main from './Main/Main';
@@ -10,8 +11,6 @@ import Footer from './Footer/Footer';
 import TaskForm from './TaskForm/TaskForm';
 import Mytasks from './Mytasks/Mytasks';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
-// constants
-import {urlData} from '../constants/urlData';
 // css
 import './App.css';
 
@@ -25,9 +24,14 @@ function App() {
     email: undefined,
   });
   const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
 
   // token
   const token = JSON.parse(localStorage.getItem('jwt'));
+
+  useEffect(() => {
+    history.push('/');
+  }, [])
 
   // show task popup
   const showTaskPopup = () => {
@@ -62,13 +66,8 @@ function App() {
     setLoggedIn(false);
   }
 
-  console.log(localStorage.getItem('jwt'))
-
   return (
     <div className="App">
-      <div className='loader__wrapper'>
-        <div class="loader"></div>
-      </div>
       <Header setUser={setCurrentUser} user={user} loggedIn={loggedIn} logout={logout}/>
       <Main showTaskForm={showTaskPopup} hideTaskForm={hideTaskPopup} user={user} loggedIn={loggedIn} />
       <Switch>
@@ -85,6 +84,9 @@ function App() {
       </Switch>
       <Footer />
       <TaskForm visibility={taskShow} formClose={hideTaskPopup} user={user} token={token} />
+      <div className='loader__wrapper'>
+        <div className="loader"></div>
+      </div>
     </div>
   );
 }

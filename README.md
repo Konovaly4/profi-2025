@@ -11,7 +11,7 @@
 
 **О проекте**
 
-Это учебный проект, выполненный в рамках Хакатона 2025: «Гражданин-поэт» от Яндекс.Практикум.
+Это учебный проект, выполненный в рамках Хакатона 2025: «Гражданин-поэт» от Яндекс.Практикум. Идея - создать страницу по приемке заявок на домашние работы от жильцов.
 
 **Figma**
 
@@ -28,87 +28,29 @@
 3. BEM
 4. JS
 5. React
+6. Strapi
 
 **Как собрать проект**
 
-Информация, как собрать проект.
+* Клонировать репозиторий
+* Открыть терминал, зайти в папку проекта и запустить команду npm install
+* Запустить скрипт Start (или команду npm start)
+
+**Как работать с собранным проектом**
+
+Для неавторизированного пользователя доступна только главная страница с возможностью авторизироваться и войти в систему, а так же просмотр заявок других пользователей в блоке с отзывами.
+На странице необходимо зарегистрироваться и затем выполнить вход как зарегистрированный пользователь. Для зарегистрированного
+пользователя доступны опции "Мои заявки" и "Создать заявку". После нажатия на кнопку "Мои заявки" появится список заявок или сообщение, что их пока нет - можно создать свои заявки, нажав на кнопку "Создать заявку".
+При нажатии на заявку из списка заявок, появится окно для отметки состояния заявки (реализовано кнопкой с 3-мя состояниями) и отметки рейтинга заявки (подразумевается удовлетворение клиента работами после их выполнения). Состояние заявки изменяется при нажатии на "Изменить".
+Серверная часть проекта реализована на фреймворке Strapi и выложена в Google Cloud. 
 
 **Команда №27 (список всех участников проекта)**
 
 1. Анастасия Куликова - дизайнер
 2. Максим Коновалов - разработчик
 3. Юлия Охотина - разработчик
-4. Юлия Кутанина - дизайнер (выбыла)
-5. Ирина Дюбанова - дизайнер (выбыла)
 
+**Выявленные баги / необходимость в доработке в текущей версии**
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Не обновляется автоматически список заявок зарегистрированного пользователя: для обновления списка после любого действия с заявками, нужно перейти на главную страницу, нажав кнопку в основном блоке сайта, а затем еще раз открыть список заявок.
+* Не реализована валидация инпутов.

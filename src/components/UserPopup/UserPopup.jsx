@@ -103,7 +103,7 @@ const UserPopup = (props) => {
       <form className='user-popup'>
         <h2 className='user-popup__title'>{props.state === 'registration' ? regPopupData.regTitle :regPopupData.loginTitle}</h2>
         {props.state === 'registration' && <input className='user-popup__input' type='text' name='name' placeholder={regPopupData.name} onChange={setName}></input>}
-        {props.state === 'registration' && <input className='user-popup__input' type='text' name='phone' placeholder={regPopupData.phone} onChange={setPhone}></input>}
+        {props.state === 'registration' && <input className='user-popup__input' type='text' name='phone' pattern='^(\+7|8)(\(|\s|-)?\d{3}(\)|\s|-)?\s?(\d(\s|-)?){6}\d' placeholder={regPopupData.phone} onChange={setPhone}></input>}
         <input className='user-popup__input' type='email' name='email' placeholder={regPopupData.email} onChange={setEmail}></input>
         <input className='user-popup__input' type='text' name='password' placeholder={regPopupData.password} onChange={setPassword}></input>
         <div className='user-popup__button-wrapper'>

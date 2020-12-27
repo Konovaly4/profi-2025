@@ -17,11 +17,6 @@ const Reviews = (props) => {
   // hooks
   const {
     tasksGet,
-    tasksGetByClient,
-    tasksGetByWorker,
-    taskCreate,
-    taskUpdate,
-    taskDelete
   } = useTaskFetch(urlData.network, props.token, workData, userData, workerData)
 
   // collect reviews

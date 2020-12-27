@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import cn from 'classnames';
 import TaskFormSelect from './TaskFormSelect/TaskFormSelect';
@@ -27,25 +27,18 @@ const TaskForm = (props) => {
 
   // use fetch hooks
   const {
-    tasksGet,
-    tasksGetByClient,
-    tasksGetByWorker,
     taskCreate,
-    taskUpdate,
-    taskDelete
   } = useTaskFetch(urlData.network, props.token, workData, userData, workerData)
 
 
   // set work type
   const setType = (e) => {
-    // console.log('e.target - ' + e.target.value)
     setWorkType(e.target.value);
     setWorkSubtype(0);
   }
 
   // set work subtype
   const setSubtype = (e) => {
-    // console.log('e.subtarget - ' + e.target.value)
     setWorkSubtype(e.target.value);
   }
 
@@ -55,7 +48,8 @@ const TaskForm = (props) => {
   }
 
   // open alert popup
-  const alertOpen = () => {
+  const alertOpen = (e) => {
+    e && e.preventDefault();
     SetAlertVisibility(true);
   }
   
@@ -63,7 +57,7 @@ const TaskForm = (props) => {
   const alertCloseYesOption = (e) => {
     e.preventDefault();
     SetAlertVisibility(false);
-      props.formClose();
+    props.formClose();
   }
 
   // close alert popup with yes option
