@@ -19,7 +19,6 @@ const Review = (props) => {
         <li id='1' className={cn('review__rating-item', {'review__rating-item_active': rating >=3})} />
         <li id='1' className={cn('review__rating-item', {'review__rating-item_active': rating >=4})} />
       </ul>
-      <button className='review__button'>Подробнее &raquo;</button>
     </li>
   )
 }
