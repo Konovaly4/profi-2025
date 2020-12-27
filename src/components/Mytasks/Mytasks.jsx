@@ -48,7 +48,6 @@ const Mytasks = (props) => {
     <section className='mytasks'>
       <div className='mytasks__container'>
         <h2 className='mytasks__title'>{tasksData.title}</h2>
-        <button className='mytasks__filter-button'>{tasksData.buttonName}</button>
       </div>
       <ul className='mytasks__list'>
         {taskList.length === 0 ?
@@ -58,9 +57,9 @@ const Mytasks = (props) => {
               <Mytask key={num} number={num} onTaskShow={showTaskCard} task={item}/>
             )
           })
-        }    
+        }
         </ul>
-        {currentTask.length !== 0 && 
+        {currentTask.length !== 0 &&
           <TaskCard visibility={taskCardShow} currentTask={currentTask} onClose={hideTaskCard} token={props.token} user={props.user} />
         }
     </section>
