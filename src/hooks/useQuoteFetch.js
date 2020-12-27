@@ -14,7 +14,6 @@ const useQuoteFetch = (url, keyword) => {
     .then(data => {
       if (!data || data.length === 0) return;
       if (data.length === 1) return (data[0].fields.text);
-      console.log('fetchedData - ' + data);
       return data[Math.round(Math.random() * (data.length - 1))].fields.text;
     })
     .catch(err => console.log(err));

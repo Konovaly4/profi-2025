@@ -15,14 +15,7 @@ const Mytasks = (props) => {
   const workData = undefined;
   const worker = undefined;
 
-  const {
-    tasksGet,
-    tasksGetByClient,
-    tasksGetByWorker,
-    taskCreate,
-    taskUpdate,
-    taskDelete
-  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker);
+  const {tasksGetByClient} = useTaskFetch(urlData.network, props.token, workData, props.user, worker);
 
   useEffect(() => {
     !props.token && !props.user.username && setTaskList([]);
@@ -30,6 +23,7 @@ const Mytasks = (props) => {
     .then(res => {
       setTaskList(res);
     })
+    console.log('upd')
   }, [])
 
   const showTaskCard = (e) => {
@@ -58,10 +52,10 @@ const Mytasks = (props) => {
             )
           })
         }
-        </ul>
-        {currentTask.length !== 0 &&
-          <TaskCard visibility={taskCardShow} currentTask={currentTask} onClose={hideTaskCard} token={props.token} user={props.user} />
-        }
+      </ul>
+      {currentTask.length !== 0 &&
+        <TaskCard visibility={taskCardShow} currentTask={currentTask} onClose={hideTaskCard} token={props.token} user={props.user} />
+      }
     </section>
   )
 }
