@@ -1,8 +1,9 @@
-// import React from 'react';
-
 const useTaskFetch = (url, token, workData, userData, workerData) => {
+  const loader = document.querySelector('.loader__wrapper');
+
   // getting all tasks
   const tasksGet = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}tasks`, {
       redirect: 'follow',
       method: 'GET',
@@ -12,12 +13,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         // 'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
+      loader.classList.remove('loader__wrapper_visible');
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
   
   // get client's tasks
   const tasksGetByClient = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}tasks?client_name=${userData.username}`, {
       redirect: 'follow',
       method: 'GET',
@@ -27,6 +30,7 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
+      loader.classList.remove('loader__wrapper_visible');
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
@@ -48,6 +52,7 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
 
     // task create
     const taskCreate = () => {
+      loader.classList.add('loader__wrapper_visible');
       return fetch(`${url}tasks`, {
         redirect: 'follow',
         method: 'POST',
@@ -74,12 +79,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         })
       })
       .then((res) => {
-       return (res.ok ? res.json() : Promise.reject(res));
+        loader.classList.remove('loader__wrapper_visible');
+        return (res.ok ? res.json() : Promise.reject(res));
       })
     }
 
         // task update
         const taskUpdate = () => {
+          loader.classList.add('loader__wrapper_visible');
           return fetch(`${url}tasks/${workData.id}`, {
             redirect: 'follow',
             method: 'PUT',
@@ -105,12 +112,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
             })
           })
           .then((res) => {
-           return (res.ok ? res.json() : Promise.reject(res));
+            loader.classList.remove('loader__wrapper_visible');
+            return (res.ok ? res.json() : Promise.reject(res));
           })
         }
 
     // delete user
     const taskDelete = () => {
+      loader.classList.add('loader__wrapper_visible');
       return fetch(`${url}tasks/${workData.id}`, {
         redirect: 'follow',
         method: 'DELETE',
@@ -120,6 +129,7 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
           'Authorization': `Bearer ${token}`,
       }})
       .then((res) => {
+        loader.classList.remove('loader__wrapper_visible');
         return (res.ok ? res.json() : Promise.reject(res));
       })
     }  

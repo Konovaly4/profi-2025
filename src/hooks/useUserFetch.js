@@ -1,8 +1,9 @@
-// import React from 'react';
-
 const useUserFetch = (url, data) => {
+  const loader = document.querySelector('.loader__wrapper');
+
   // user authorization
   const userAuth = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}auth/local/register`, {
       redirect: 'follow',
       method: 'POST',
@@ -19,12 +20,14 @@ const useUserFetch = (url, data) => {
       })
     })
     .then((res) => {
-     return (res.ok ? res.json() : Promise.reject(res));
+      loader.classList.remove('loader__wrapper_visible');
+      return (res.ok ? res.json() : Promise.reject(res));
     })
   }
 
   // user login
   const userLogin = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}auth/local`, {
       redirect: 'follow',
       method: 'POST',
@@ -38,12 +41,14 @@ const useUserFetch = (url, data) => {
       }) 
     })
     .then((res) => {
+      loader.classList.remove('loader__wrapper_visible');
       return (res.ok ? res.json() : Promise.reject(res));
      })
   }
 
   // getting all users
   const usersGet = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}users`, {
       redirect: 'follow',
       method: 'GET',
@@ -52,12 +57,14 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
     }})
     .then((res) => {
+      loader.classList.remove('loader__wrapper_visible');
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
   
   // get one user
   const userGet = () => {
+    loader.classList.add('loader__wrapper_visible');
     return fetch(`${url}users/${data.userId}`, {
       redirect: 'follow',
       method: 'GET',
@@ -66,12 +73,14 @@ const useUserFetch = (url, data) => {
         'Content-Type': 'application/json',
     }})
     .then((res) => {
+      loader.classList.remove('loader__wrapper_visible');
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
 
     // user update
     const userUpdate = () => {
+      loader.classList.add('loader__wrapper_visible');
       return fetch(`${url}users/:id`, {
         redirect: 'follow',
         method: 'PUT',
@@ -89,12 +98,14 @@ const useUserFetch = (url, data) => {
         })
       })
       .then((res) => {
-       return (res.ok ? res.json() : Promise.reject(res));
+        loader.classList.remove('loader__wrapper_visible');
+        return (res.ok ? res.json() : Promise.reject(res));
       })
     }
 
     // delete user
     const userDelete = () => {
+      loader.classList.add('loader__wrapper_visible');
       return fetch(`${url}users/:id`, {
         redirect: 'follow',
         method: 'DELETE',
@@ -104,6 +115,7 @@ const useUserFetch = (url, data) => {
           'Authorization': `Bearer ${data.token}`
       }})
       .then((res) => {
+        loader.classList.remove('loader__wrapper_visible');
         return (res.ok ? res.json() : Promise.reject(res));
       })
     }  
