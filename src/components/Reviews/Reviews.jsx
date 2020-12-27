@@ -47,7 +47,7 @@ const Reviews = (props) => {
       <div className='reviews__container'>
         {(!dataList || dataList.length === 0) && <p className='reviews__note'>Пока нет ревью</p>}
         {dataList.length !== 0 && dataSearcnValue !== 0 && <Arrow direction= 'left' onArrowClick={searchLeft} />}
-        {dataList.length !== 0 && 
+        {dataList.length !== 0 &&
           <ul className='reviews__list'>
             {dataList.slice(dataSearcnValue, dataSearcnValue + 2).map((i, num) => {
               return (
