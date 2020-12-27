@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import cn from 'classnames';
 import TaskFormSelect from './TaskFormSelect/TaskFormSelect';
 import CloseButton from '../CloseButton/CloseButton';
@@ -20,6 +21,9 @@ const TaskForm = (props) => {
   // create common data
   const workData = {type, subtype, description};
   const workerData = undefined;
+
+  // history
+  const history = useHistory();
 
   // use fetch hooks
   const {
@@ -90,6 +94,7 @@ const TaskForm = (props) => {
       e.preventDefault();
       // console.log('token - ' + props.token);
       createTask();
+      history.replace('/my-tasks');
       props.formClose();
     }
 

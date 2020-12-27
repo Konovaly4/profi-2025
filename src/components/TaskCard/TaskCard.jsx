@@ -6,7 +6,8 @@ import useTaskFetch from '../../hooks/useTaskFetch';
 import useQuoteFetch from '../../hooks/useQuoteFetch';
 import {urlData} from '../../constants/urlData';
 import {ratingValue} from '../../constants/ratingValue';
-import {taskFormPlaceholders, taskButtonPlaceholders, buttonData, alertPopupData, taskFormTypeList, taskFormSubtypeList} from '../../constants/formData';
+import {taskButtonPlaceholders, buttonData, alertPopupData, taskFormSubtypeList} from '../../constants/formData';
+import popupLabel from '../../images/popup-label.svg';
 import './TaskCard.css'
 
 const TaskCard = (props) => {
@@ -18,6 +19,7 @@ const TaskCard = (props) => {
   const [quote, setQuote] = useState('');
 
   // constants
+  const taskCreatedTime = props.currentTask.created_at.slice(0, 10);
   const workSubTypeList = taskFormSubtypeList[props.currentTask.type];
   const workData = props.currentTask;
   const worker = undefined;
@@ -91,21 +93,6 @@ const TaskCard = (props) => {
     } else setRating(e.target.id);
   }
 
-  // const selectQuote = (e) => {
-  //   e.preventDefault();
-  //   if (rating == 0) {
-  //     setQuote(feedbackValue);
-  //   }
-  //   quoteSearch()
-  //   .then(data => {
-  //     console.log('data - ' + data);
-  //     if (!data) return;
-  //     setQuote(data);
-  //   })
-  //   console.log('quote - ' + quote);
-  //   props.onClose();
-  // }
-
   const updateTask = (e) => {
     e.preventDefault();
     workData.feedback = quote;
@@ -139,17 +126,12 @@ const TaskCard = (props) => {
     <div className={cn('task-card__wrapper', {'task-card__wrapper_visible': props.visibility})} onClick={closeByWrapper}>
       <section className='task-card'>
         <h2 className='task-card__title'>{workSubTypeList[props.currentTask.subtype]  }</h2>
-        <p className='task-card__create-data'>{props.currentTask.createdAt}</p>
-        <p className='task-card__description' rows='4' placeholder={taskFormPlaceholders.workDescription}>{props.currentTask.description}</p>
-        <button className={cn('task-card__confirm-button', {
-          'task-card__confirm-button_not-confirmed': workConfirmation === 'not-confirmed',
-          'task-card__confirm-button_confirmed': workConfirmation === 'confirmed',
-          'task-card__confirm-button_done': workConfirmation === 'done'
-        })} onClick={setWorkStatus}>{
+        <p className='task-card__create-data'>{taskCreatedTime}</p>
+        <p className='task-card__description'>{props.currentTask.description}</p>
+        <button className='task-card__confirm-button' onClick={setWorkStatus}>{
           workConfirmation === 'not-confirmed' ? taskButtonPlaceholders.notConfirmed : 
           workConfirmation === 'confirmed' ? taskButtonPlaceholders.confirmed : taskButtonPlaceholders.finished
           }</button>
-        <textarea className='task-card__feedback' rows='6' placeholder={taskFormPlaceholders.clientFeedback} onChange={setFeedback}></textarea>
         <ul className='task-card__rating-container'>
           <li id='1' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating >= 1})} onClick={changeRating} />
           <li id='2' className={cn('task-card__rating-item', {'task-card__rating-item_active': rating >= 2})} onClick={changeRating} />
@@ -162,6 +144,7 @@ const TaskCard = (props) => {
         </div>
         <CloseButton onPress={props.onClose} />
         <AlertPopup visibility={alertVisibility} title={alertPopupData.dataCardDelete} onYesClick={deleteTask} onNoClick={alertClose} />
+        <img className='task-card__label' src={popupLabel} alt='task-card-label' />
       </section>
     </div>
   )
