@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/profi-2025/static/css/main.e14f7241.chunk.css",
-    "main.js": "/profi-2025/static/js/main.72855933.chunk.js",
-    "main.js.map": "/profi-2025/static/js/main.72855933.chunk.js.map",
+    "main.css": "/profi-2025/static/css/main.0e253d5c.chunk.css",
+    "main.js": "/profi-2025/static/js/main.1b5acb5f.chunk.js",
+    "main.js.map": "/profi-2025/static/js/main.1b5acb5f.chunk.js.map",
     "runtime-main.js": "/profi-2025/static/js/runtime-main.a8a4ab8f.js",
     "runtime-main.js.map": "/profi-2025/static/js/runtime-main.a8a4ab8f.js.map",
     "static/js/2.89b50e77.chunk.js": "/profi-2025/static/js/2.89b50e77.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.62c96e8e.chunk.js": "/profi-2025/static/js/3.62c96e8e.chunk.js",
     "static/js/3.62c96e8e.chunk.js.map": "/profi-2025/static/js/3.62c96e8e.chunk.js.map",
     "index.html": "/profi-2025/index.html",
-    "static/css/main.e14f7241.chunk.css.map": "/profi-2025/static/css/main.e14f7241.chunk.css.map",
+    "static/css/main.0e253d5c.chunk.css.map": "/profi-2025/static/css/main.0e253d5c.chunk.css.map",
     "static/js/2.89b50e77.chunk.js.LICENSE.txt": "/profi-2025/static/js/2.89b50e77.chunk.js.LICENSE.txt",
     "static/media/About.css": "/profi-2025/static/media/about_bgi.6cb1ec04.svg",
     "static/media/Arrow.css": "/profi-2025/static/media/arrow_right.b2589451.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.a8a4ab8f.js",
     "static/js/2.89b50e77.chunk.js",
-    "static/css/main.e14f7241.chunk.css",
-    "static/js/main.72855933.chunk.js"
+    "static/css/main.0e253d5c.chunk.css",
+    "static/js/main.1b5acb5f.chunk.js"
   ]
 }
