@@ -1,9 +1,8 @@
-const useTaskFetch = (url, token, workData, userData, workerData) => {
-  const loader = document.querySelector('.loader__wrapper');
+const useTaskFetch = (url, token, workData, userData, workerData, loaderOn, loaderOff) => {
 
   // getting all tasks
   const tasksGet = () => {
-    loader.classList.add('loader__wrapper_visible');
+    loaderOn();
     return fetch(`${url}tasks`, {
       redirect: 'follow',
       method: 'GET',
@@ -13,14 +12,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         // 'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
-      loader.classList.remove('loader__wrapper_visible');
+      loaderOff();
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
   
   // get client's tasks
   const tasksGetByClient = () => {
-    loader.classList.add('loader__wrapper_visible');
+    loaderOn();
     return fetch(`${url}tasks?client_name=${userData.username}`, {
       redirect: 'follow',
       method: 'GET',
@@ -30,13 +29,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         'Authorization': `Bearer ${token}`,
     }})
     .then((res) => {
-      loader.classList.remove('loader__wrapper_visible');
+      loaderOff();
       return (res.ok ? res.json() : Promise.reject(res));
     })
   }
 
     // get worker's tasks
     const tasksGetByWorker = () => {
+      loaderOn();
       return fetch(`${url}tasks?client_name=${workerData.worker_name}`, {
         redirect: 'follow',
         method: 'GET',
@@ -46,13 +46,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
           'Authorization': `Bearer ${token}`,
       }})
       .then((res) => {
+        loaderOff();
         return (res.ok ? res.json() : Promise.reject(res));
       })
     }
 
     // task create
     const taskCreate = () => {
-      loader.classList.add('loader__wrapper_visible');
+      loaderOn();
       return fetch(`${url}tasks`, {
         redirect: 'follow',
         method: 'POST',
@@ -79,14 +80,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
         })
       })
       .then((res) => {
-        loader.classList.remove('loader__wrapper_visible');
+        loaderOff();
         return (res.ok ? res.json() : Promise.reject(res));
       })
     }
 
         // task update
         const taskUpdate = () => {
-          loader.classList.add('loader__wrapper_visible');
+          loaderOn();
           return fetch(`${url}tasks/${workData.id}`, {
             redirect: 'follow',
             method: 'PUT',
@@ -112,14 +113,14 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
             })
           })
           .then((res) => {
-            loader.classList.remove('loader__wrapper_visible');
+            loaderOff();
             return (res.ok ? res.json() : Promise.reject(res));
           })
         }
 
     // delete user
     const taskDelete = () => {
-      loader.classList.add('loader__wrapper_visible');
+      loaderOn();
       return fetch(`${url}tasks/${workData.id}`, {
         redirect: 'follow',
         method: 'DELETE',
@@ -129,7 +130,7 @@ const useTaskFetch = (url, token, workData, userData, workerData) => {
           'Authorization': `Bearer ${token}`,
       }})
       .then((res) => {
-        loader.classList.remove('loader__wrapper_visible');
+        loaderOff();
         return (res.ok ? res.json() : Promise.reject(res));
       })
     }  

@@ -22,6 +22,8 @@ const TaskCard = (props) => {
   const taskCreatedTime = props.currentTask.created_at.slice(0, 10);
   const workSubTypeList = taskFormSubtypeList[props.currentTask.type];
   const workData = props.currentTask;
+  const loaderOn = props.loaderOn;
+  const loaderOff = props.loaderOff;
   const worker = undefined;
 
   // hooks
@@ -29,7 +31,7 @@ const TaskCard = (props) => {
   const {
     taskUpdate,
     taskDelete
-  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker);
+  } = useTaskFetch(urlData.network, props.token, workData, props.user, worker, loaderOn, loaderOff);
 
   // qoute hook
   const {quoteSearch} = useQuoteFetch(urlData.quoteUrl, feedbackValue);
@@ -44,7 +46,7 @@ const TaskCard = (props) => {
     const keywordList = ratingValue[rating];
     const keyword = rating == 0 ? ratingValue[0] :  keywordList[Math.round(Math.random() * (keywordList.length - 1))];
     setFeedbackValue(keyword);
-    console.log('feedbackval - ' + feedbackValue);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rating])
 
   // set quote
@@ -54,11 +56,10 @@ const TaskCard = (props) => {
     }
     quoteSearch()
     .then(data => {
-      console.log('data - ' + data);
       if (!data) return;
       setQuote(data);
     })
-    console.log('quote - ' + quote);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [feedbackValue])
 
   // work status setter
@@ -81,10 +82,6 @@ const TaskCard = (props) => {
   const alertClose = (e) => {
     e.preventDefault();
     SetAlertVisibility(false);
-  }
-
-  const setFeedback = (e) => {
-    setFeedbackValue(e.target.value);
   }
 
   const changeRating = (e) => {

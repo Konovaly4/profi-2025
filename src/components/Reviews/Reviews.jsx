@@ -10,6 +10,8 @@ const Reviews = (props) => {
   const [dataSearcnValue, setDataSearchValue] = useState(0);
 
   // constants
+  const loaderOn = props.loaderOn;
+  const loaderOff = props.loaderOff;
   const userData = props.user;
   const workData = undefined;
   const workerData = undefined;
@@ -17,7 +19,7 @@ const Reviews = (props) => {
   // hooks
   const {
     tasksGet,
-  } = useTaskFetch(urlData.network, props.token, workData, userData, workerData)
+  } = useTaskFetch(urlData.network, props.token, workData, userData, workerData, loaderOn, loaderOff)
 
   // collect reviews
   useEffect(() => {

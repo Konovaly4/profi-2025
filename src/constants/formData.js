@@ -11,7 +11,7 @@ export const taskFormData = {
 export const taskFormPlaceholders = {
   workDescription: 'Опишите работу',
   clientName: 'Ваше имя',
-  clientPhone: 'Телефон в формате +7-999-123-45-67',
+  clientPhone: 'Ваш телефон (+7-999-123-45-67)',
   clientEmail: 'Ваш email',
   clientFeedback: 'Оставьте отзыв после выполнения работы'
 }
