@@ -1,8 +1,7 @@
-const useQuoteFetch = (url, keyword) => {
-  const loader = document.querySelector('.loader__wrapper');
+const useQuoteFetch = (url, keyword, loaderOn, loaderOff) => {
 
   const quoteSearch = () => {
-    loader.classList.add('loader__wrapper_visible');
+    loaderOn();
     return fetch (`${url}?q=${keyword}&onlyLines=50`, {
       redirect: 'follow',
       method: 'GET',
@@ -11,7 +10,7 @@ const useQuoteFetch = (url, keyword) => {
         'Content-Type': 'application/json',
     }})
     .then(res => {
-      loader.classList.remove('loader__wrapper_visible');
+      loaderOff();
       return( res.ok ? res.json() : Promise.reject(res));
     })
     .then(data => {

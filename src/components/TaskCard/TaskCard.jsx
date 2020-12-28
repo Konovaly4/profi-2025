@@ -34,7 +34,7 @@ const TaskCard = (props) => {
   } = useTaskFetch(urlData.network, props.token, workData, props.user, worker, loaderOn, loaderOff);
 
   // qoute hook
-  const {quoteSearch} = useQuoteFetch(urlData.quoteUrl, feedbackValue);
+  const {quoteSearch} = useQuoteFetch(urlData.quoteUrl, feedbackValue, loaderOn, loaderOff);
 
   // set initial rating
   useEffect(() => {
