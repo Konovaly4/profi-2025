@@ -1,0 +1,108 @@
+.poem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  margin-bottom: 153px;
+  background-image: url('../../images/poem_bgi.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 0;
+}
+
+.poem__title {
+  margin: 80px auto;
+  padding: 0;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: calc(41 / 34);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  color: #242C48;
+}
+
+.poem__title::before {
+  content: "";
+  width: 174px;
+  height: 15px;
+  background-color: #E2001D;
+  position: absolute;
+  left: 43%;
+  top: 50px;
+}
+
+.poem__title::after {
+  content: "";
+  width: 155px;
+  height: 35px;
+  background: url('../../images/quotes.svg');
+  position: absolute;
+  left: 43%;
+  bottom: -95px;
+}
+
+.poem__subtitle {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: calc(32 / 26);
+  letter-spacing: 0.044em;
+  text-transform: uppercase;
+  color: #242C48;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.poem__quote {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.poem__quote-quotes::before, .poem__quote-quotes::after {
+  font-family: 'Didot', 'Times New Roman', serif;
+  color: #E2001D;
+  position: absolute;
+  font-size: 95px;
+  line-height: calc(95 / 95);
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+}
+
+.poem__quote-quotes::before {
+  content: "\201C";
+  left: -60px;
+  top: -25px;
+}
+
+.poem__quote-quotes::after {
+  content: "\201D";
+  right: -60px;
+  bottom: -25px;
+}
+
+
+.poem__quote-text {
+  width: 400px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: calc(34 / 26);
+  color: #223157;
+  margin: 0 0 11px;
+  padding: 0;
+}
+
+.poem__quote-author {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: calc(23 / 18);
+  color: #B3B4B9;
+  text-align: right;
+  display: block;
+}

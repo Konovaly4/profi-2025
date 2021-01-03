@@ -1,0 +1,127 @@
+.review__container {
+  margin: 0 25px 0 0;
+  padding: 0;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #F5F5F5;
+}
+
+.review__container:last-child {
+  margin-right: 0;
+}
+
+.review__image {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: 200px;
+}
+
+.review__header {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: calc(30 / 22);
+  text-transform: uppercase;
+  color: black;
+  text-align: center;
+  margin: 10px auto;
+  padding: 0 10px;
+  min-height: 60px;
+}
+
+.review__text {
+  min-height: 173px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(30 / 18);
+  margin: 0 15px;
+  padding: 0 15px;
+  text-align: center;
+  color: #000000;
+  
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review__text-writer {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: calc(30 / 22);
+  margin: 17px 0;
+  padding: 0 15px;
+  text-align: center;
+  color: #000000;
+}
+
+.review__rating-container {
+  margin: 25px 0;
+  padding: 0;
+  width: calc(100% - 90px);
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+
+.review__rating-item {
+  margin: 0;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.review__rating-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(197, 196, 196, 1) 0%, rgba(180, 179, 178, 1) 100%);
+  position: relative;
+}
+
+.review__rating-item:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  right: 1px;
+  background: linear-gradient(to bottom, rgba(221, 220, 219, 1) 0%, rgba(209, 208, 206, 1) 100%);
+  z-index: 1;
+}
+
+.review__rating-item,
+.review__rating-item:before {
+  -webkit-clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+  clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
+}
+
+.review__rating-item:hover {
+  background: linear-gradient(to bottom, rgba(224, 194, 75, 1) 0%, rgba(207, 125, 0, 1) 100%);
+}
+
+.review__rating-item:hover:before {
+  background: linear-gradient(to bottom, rgba(243, 212, 85, 1) 0%, rgba(238, 164, 0, 1) 100%);
+}
+
+.review__rating-item_active {
+  background: orange;
+}
+
+.review__rating-item_active:before {
+  background: orange;
+}
