@@ -1,56 +1,70 @@
-# «Гражданин-поэт» 2025. Команда №27.
+# Getting Started with Create React App
 
-### Обзор
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-* О проекте
-* Figma
-* GitHub Pages
-* Технологии
-* Как собрать проект
-* Команда №27 (список участников проекта)
+## Available Scripts
 
-**О проекте**
+In the project directory, you can run:
 
-Это учебный проект, выполненный в рамках Хакатона 2025: «Гражданин-поэт» от Яндекс.Практикум. Идея - создать страницу по приемке заявок на домашние работы от жильцов.
+### `npm start`
 
-**Figma**
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-* [Ссылка на дизайн-проект в Figma](https://www.figma.com/file/UsgGVc0As9KDkLKfhRlzFV/%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD-%D0%BF%D0%BE%D1%8D%D1%82)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-**GitHub Pages**
+### `npm test`
 
-* [Ссылка на демо на GitHub Pages](https://konovaly4.github.io/profi-2025/)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-**Технологии**
+### `npm run build`
 
-1. HTML
-2. CSS
-3. BEM
-4. JS
-5. React
-6. Strapi
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-**Как собрать проект**
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-* Клонировать репозиторий
-* Открыть терминал, зайти в папку проекта и запустить команду npm install
-* Запустить скрипт Start (или команду npm start)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-**Как работать с собранным проектом**
+### `npm run eject`
 
-Для неавторизированного пользователя доступна только главная страница с возможностью авторизироваться и войти в систему, а так же просмотр заявок других пользователей в блоке с отзывами.
-На странице необходимо зарегистрироваться и затем выполнить вход как зарегистрированный пользователь. Для зарегистрированного
-пользователя доступны опции "Мои заявки" и "Создать заявку". После нажатия на кнопку "Мои заявки" появится список заявок или сообщение, что их пока нет - можно создать свои заявки, нажав на кнопку "Создать заявку".
-При нажатии на заявку из списка заявок, появится окно для отметки состояния заявки (реализовано кнопкой с 3-мя состояниями) и отметки рейтинга заявки (подразумевается удовлетворение клиента работами после их выполнения). Состояние заявки изменяется при нажатии на "Изменить".
-Серверная часть проекта реализована на фреймворке Strapi и выложена в Google Cloud. 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-**Команда №27 (список всех участников проекта)**
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-1. Анастасия Куликова - дизайнер
-2. Максим Коновалов - разработчик
-3. Юлия Охотина - разработчик
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-**Выявленные баги / необходимость в доработке в текущей версии**
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-* Не обновляется автоматически список заявок зарегистрированного пользователя: для обновления списка после любого действия с заявками, нужно перейти на главную страницу, нажав кнопку в основном блоке сайта, а затем еще раз открыть список заявок.
-* Не реализована валидация инпутов.
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
