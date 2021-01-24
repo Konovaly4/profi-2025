@@ -14,12 +14,14 @@ const UserPopup = (props) => {
   const [password,  setUserPassword] = useState(undefined);
 
   const userData = {username, userphone, email, password};
+  const loaderOn = props.loaderOn;
+  const loaderOff = props.loaderOff;
   // console.log(userData);
 
   const {
     userAuth, 
     userLogin,
-  } = useUserFetch(urlData.network, userData);
+  } = useUserFetch(urlData.network, userData, loaderOn, loaderOff);
 
   // popup open
   useEffect(() => {
@@ -73,7 +75,6 @@ const UserPopup = (props) => {
   const loginUser = () => {
     userLogin()
     .then(res => {
-      console.log(res);
       props.setUser(res);
     })
     .catch(err => {

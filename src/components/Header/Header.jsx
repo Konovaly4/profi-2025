@@ -37,7 +37,15 @@ const Header = (props) => {
           { props.loggedIn && <li className='header__user-navigation-item'><a className='header__logout-link' onClick={props.logout} aria-label='Выход'></a></li>}
         </ul>
         {props.user.userToken && <p>Привет, {props.user.userName}</p>}
-        <UserPopup state={userState} setUserState={setUserState} setLoginState={setLoginState} clearRegState={clearRegState} setUser={props.setUser}/>
+        <UserPopup 
+        state={userState} 
+        setUserState={setUserState} 
+        setLoginState={setLoginState} 
+        clearRegState={clearRegState} 
+        setUser={props.setUser}
+        loaderOn={props.loaderOn}
+        loaderOff={props.loaderOff}
+        />
       </div>
     </header>
   )

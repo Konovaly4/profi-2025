@@ -10,12 +10,14 @@ const Mytasks = (props) => {
   const [taskList, setTaskList] = useState([]);
   const [taskCardShow, setTaskCardShow] = useState(false);
   const [currentTask, setCurTask] = useState([]);
+  const loaderOn = props.loaderOn;
+  const loaderOff = props.loaderOff;
   // get user token
   // temp data
   const workData = undefined;
   const worker = undefined;
 
-  const {tasksGetByClient} = useTaskFetch(urlData.network, props.token, workData, props.user, worker);
+  const {tasksGetByClient} = useTaskFetch(urlData.network, props.token, workData, props.user, worker, loaderOn, loaderOff);
 
   useEffect(() => {
     !props.token && !props.user.username && setTaskList([]);
@@ -23,14 +25,13 @@ const Mytasks = (props) => {
     .then(res => {
       setTaskList(res);
     })
-    console.log('upd')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const showTaskCard = (e) => {
-    console.log(e.target.id);
     setCurTask(taskList[e.target.id]);
     setTaskCardShow(true);
-    // console.log('currentTask - ' + currentTask.client_name);
+
   }
 
   const hideTaskCard = () => {
@@ -54,7 +55,15 @@ const Mytasks = (props) => {
         }
       </ul>
       {currentTask.length !== 0 &&
-        <TaskCard visibility={taskCardShow} currentTask={currentTask} onClose={hideTaskCard} token={props.token} user={props.user} />
+        <TaskCard 
+        visibility={taskCardShow} 
+        currentTask={currentTask} 
+        onClose={hideTaskCard} 
+        token={props.token} 
+        user={props.user} 
+        loaderOn={loaderOn}
+        loaderOff={loaderOff}
+        />
       }
     </section>
   )

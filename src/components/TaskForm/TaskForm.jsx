@@ -20,6 +20,8 @@ const TaskForm = (props) => {
   const userData = props.user;
   // create common data
   const workData = {type, subtype, description};
+  const loaderOn = props.loaderOn;
+  const loaderOff = props.loaderOff;
   const workerData = undefined;
 
   // history
@@ -28,7 +30,7 @@ const TaskForm = (props) => {
   // use fetch hooks
   const {
     taskCreate,
-  } = useTaskFetch(urlData.network, props.token, workData, userData, workerData)
+  } = useTaskFetch(urlData.network, props.token, workData, userData, workerData, loaderOn, loaderOff)
 
 
   // set work type
